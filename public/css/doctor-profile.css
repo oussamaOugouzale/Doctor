@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-body {}
 
 .doctorProfile {
     display: flex;
@@ -183,7 +182,7 @@ body {}
 
 .body .first div h1{
     font-family: 'Inter', sans-serif;
-    font-size: 18px;
+    font-size: 20px;
     color: #272B41;
 }
 .body .first >:nth-child(1){
@@ -208,56 +207,115 @@ body {}
     border-radius: 50%;
 }
 
-.body .first >:nth-child(2){
+.body .first .info-block{
     margin-top: 25px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+}
+.body .first .info-block h1{
+    margin-bottom: 18px;
 }
 
-.body .first >:nth-child(2) .education{
+.body .first .info-block .education{
     display: flex;
     flex-direction: row;
     gap: 14px;
 }
-.body .first >:nth-child(2) .education{
+.body .first .info-block .education{
     display: flex;
     flex-direction: row;
     gap: 30px;
-    padding: 10px;
+    padding: 0 10px 0 10px;
 }
-.body .first >:nth-child(2) .education .content{
+.body .first .info-block .education .content{
     display: flex;
     flex-direction: column;
     margin-top: -5px;
 }
 
-.body .first >:nth-child(2) .education .content h3{
+.body .first .info-block .education .content h3{
     font-size: 15px;
     font-family: 'Inter', sans-serif;
     color: #2E3842;
 }
 
-.body .first >:nth-child(2) .education .content span{
+.body .first .info-block .education .content span{
     font-family: 'Inter', sans-serif;
     color: #757575;
     font-size: 15px;
     font-weight: normal;
 }
 
-.body .first >:nth-child(2) .education .content >:nth-child(3){
+.body .first .info-block .education .content >:nth-child(3){
     font-size: 13px;
 }
 
-.body .first >:nth-child(2) .progress{
+.body .first .info-block .progress{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.body .first >:nth-child(2) .progress .vertical-line{
+.body .first .info-block .progress .vertical-line{
     height: 70px;
     background-color: #d5d5d5;
     width: 1.4px;
+}
+.body .first .min-line .progress .vertical-line{
+    height: 40px;
+    background-color: #d5d5d5;
+    width: 1.4px;
+}
+.body .first .awards .progress .vertical-line{
+    height: 100px;
+}
+.body .first .awards .education .content >:nth-child(1){
+    color: #20C0F3;
+    font-size: 15px;
+    font-weight: 600;
+}
+.body .first .awards .education .content >:nth-child(2){
+    color: #272B41;
+    font-size: 16px;
+    font-weight: 500;
+}
+.body .first .awards .education .content >:nth-child(3){
+    color: #757575;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+.body .first .services ul li{
+    flex-direction : row;
+    gap: 5px;
+    width: 30%;
+    border: 1px solid red;
+}
+.body .first .services ul{
+    border: 1px solid gray;
+    width: 80%;
+}
+
+.body .first .services li img{
+    width: 20px;
+}
+.body .first .services li{
+    list-style: none;
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.body .first .services .elements{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+.body .first .services .elements li{
+    color: #212529;
+    font-size: 15px;
+    font-weight: normal;
 }
 

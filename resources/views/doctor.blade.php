@@ -177,7 +177,7 @@
                 ">
                     <li> <a href="
                         "
-                            class=" flex justify-center border-b-4 border-sky-500 text-sky-500 py-4 active                        ">
+                            class=" flex justify-center border-b-4 border-sky-500 text-sky-500 py-4                         ">
                             Overview</a> </li>
                     <li> <a href="
                         " class="transition duration-0 hover-duration-500  flex justify-center hover:border-b-4  
@@ -206,7 +206,7 @@
                                 cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                             </p>
                         </div>
-                        <div>
+                        <div class="info-block">
                             <h1>Education</h1>
                             <div class="education">
                                 <div class="progress">
@@ -219,6 +219,122 @@
                                     <span>1998 - 2001</span>
                                 </div>
                             </div>
+                            <div class="education">
+                                <div class="progress">
+                                    <div class="circle"></div>
+                                    <div class="vertical-line"></div>
+                                </div>
+                                <div class="content">
+                                    <h3>American Dental Medical University</h3>
+                                    <span>BDS</span>
+                                    <span>1998 - 2001</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-block min-line">
+                            <h1>Work & Experience</h1>
+                            <div class="education">
+                                <div class="progress">
+                                    <div class="circle"></div>
+                                    <div class="vertical-line"></div>
+                                </div>
+                                <div class="content">
+                                    <h3>Glowing Smiles Family Dental Clinic</h3>
+                                    <span>2010 - Present (5 years)</span>
+                                </div>
+                            </div>
+                            <div class="education">
+                                <div class="progress">
+                                    <div class="circle"></div>
+                                    <div class="vertical-line"></div>
+                                </div>
+                                <div class="content">
+                                    <h3>Comfort Care Dental Clinic</h3>
+                                    <span>2007 - 2010 (3 years)</span>
+                                </div>
+                            </div>
+                            <div class="education">
+                                <div class="progress">
+                                    <div class="circle"></div>
+                                    <div class="vertical-line"></div>
+                                </div>
+                                <div class="content">
+                                    <h3>Dream Smile Dental Practice</h3>
+                                    <span>2007 - 2010 (3 years)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-block min-line awards">
+                            <h1>Awards</h1>
+                            <div class="education">
+                                <div class="progress">
+                                    <div class="circle"></div>
+                                    <div class="vertical-line"></div>
+                                </div>
+                                <div class="content">
+                                    <span>janvier 2022</span>
+                                    <h3>Humanitatrian award </h3>
+                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae, laboriosam!
+                                        Quidem ipsam ipsa culpa laborum repellendus ea, saepe explicabo, cum, natus quod
+                                        maxime. Et, odit.</p>
+                                </div>
+                            </div>
+                            <div class="education">
+                                <div class="progress">
+                                    <div class="circle"></div>
+                                    <div class="vertical-line"></div>
+                                </div>
+                                <div class="content">
+                                    <span>may 2022</span>
+                                    <h3>Certificate for International Volunteer Service
+                                    </h3>
+                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae, laboriosam!
+                                        Quidem ipsam ipsa culpa laborum repellendus ea, saepe explicabo, cum, natus quod
+                                        maxime. Et, odit.</p>
+                                </div>
+                            </div>
+                            <div class="education">
+                                <div class="progress">
+                                    <div class="circle"></div>
+                                    <div class="vertical-line"></div>
+                                </div>
+                                <div class="content">
+                                    <span>janvier 2022</span>
+                                    <h3>Humanitatrian Certificate for International Volunteer Service
+                                    </h3>
+                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae, laboriosam!
+                                        Quidem ipsam ipsa culpa laborum repellendus ea, saepe explicabo, cum, natus quod
+                                        maxime. Et, odit.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-block min-line services">
+                            <h1>Services</h1>
+                            <div class="elements">
+                                <li><img src="{{ asset('icons/arrow.png') }}" alt="arrow"> Tooth cleaning</li>
+                                <li><img src="{{ asset('icons/arrow.png') }}" alt="arrow"> Root Canal Therapy</li>
+                                <li><img src="{{ asset('icons/arrow.png') }}" alt="arrow"> Tooth cleaning</li>
+                            </div>
+                            <div class="elements">
+                                <li><img src="{{ asset('icons/arrow.png') }}" alt="arrow"> Fissure Sealants</li>
+                                <li><img src="{{ asset('icons/arrow.png') }}" alt="arrow"> Surgical Extractions</li>
+                                <li><img src="{{ asset('icons/arrow.png') }}" alt="arrow"> Composite Bonding</li>
+                            </div>
+                            </ul>
+                        </div>
+                        <div class="info-block min-line services">
+                            <h1>Specializations</h1>
+                            <div class="elements">
+                                <li><img src="{{ asset('icons/arrow.png') }}" alt="arrow"> Tooth cleaning</li>
+                                <li><img src="{{ asset('icons/arrow.png') }}" alt="arrow"> Root Canal Therapy</li>
+                                <li><img src="{{ asset('icons/arrow.png') }}" alt="arrow"> Tooth cleaning</li>
+                            </div>
+                            <div class="elements">
+                                <li><img src="{{ asset('icons/arrow.png') }}" alt="arrow"> Fissure Sealants</li>
+                                <li><img src="{{ asset('icons/arrow.png') }}" alt="arrow"> Surgical Extractions</li>
+                                <li><img src="{{ asset('icons/arrow.png') }}" alt="arrow"> Composite Bonding</li>
+                            </div>
+                            </ul>
                         </div>
                     </div>
                     <div class="hidden dv">locations</div>

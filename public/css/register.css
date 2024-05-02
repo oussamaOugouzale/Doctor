@@ -1,0 +1,31 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.mainContainer{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin-top: 6rem;
+    padding-left: 20rem;
+    border: 1px solid red;
+}
+
+.mainContainer img{
+    width: 34%;
+}
+.mainContainer .formContainer{
+    width: 29%;
+}
+.mainContainer .formContainer .header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90%;
+}
+.mainContainer .formContainer{
+    border: 1px solid #cbd5e1;
+}
