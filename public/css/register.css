@@ -1,31 +1,62 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
 
-.mainContainer{
+.mainContainer {
     display: flex;
     flex-direction: row;
-    gap: 30px;
-    margin-top: 6rem;
-    padding-left: 20rem;
-    border: 1px solid red;
+    gap: 25px;
+    margin-top: 4rem;
+    padding-left: 17rem;
 }
 
-.mainContainer img{
-    width: 34%;
+.mainContainer .img {
+    width: 40%;
+    display: flex;
+    align-items: center;
 }
-.mainContainer .formContainer{
-    width: 29%;
-}
-.mainContainer .formContainer .header{
+
+.mainContainer .formContainer {}
+
+.mainContainer .formContainer .header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 90%;
 }
-.mainContainer .formContainer{
-    border: 1px solid #cbd5e1;
+
+.mainContainer .formContainer .header h1 {
+    font-size: 18px;
+    color: #272B41;
+    font-weight: 500;
 }
+
+.mainContainer .formContainer {
+    border: 1px solid #e2e8f0;
+    width: 38%;
+}
+
+.mainContainer .formContainer .header a {
+    font-size: 15px;
+    color: #0DE0FE;
+    font-weight: 500;
+    margin-top: 3px;
+}
+
+.mainContainer .formContainer form .inputs .phone{
+    width: 376px;
+}
+
+.mainContainer .formContainer form .inputs .div{
+    margin-top: 14px;
+}
+
+
+
+
