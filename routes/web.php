@@ -15,3 +15,4 @@ Route::get('/doctor', function(){
 Route::get('/register', function(){
     return view('register');
 })->name('register');
+

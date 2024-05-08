@@ -19,8 +19,7 @@
 
 .mainContainer .img {
     width: 40%;
-    display: flex;
-    align-items: center;
+    margin-top: 6rem;
 }
 
 .mainContainer .formContainer {}
