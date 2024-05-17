@@ -15,3 +15,10 @@ Route::get('/doctor', function(){
 Route::get('/register', function(){
     return view('register');
 })->name('register');
+
+Route::post('patientRegister', [App\Http\Controllers\PatientController::class ,'register'])
+->name('patientRegister');
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
+->name('patientHome');

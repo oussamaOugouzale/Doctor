@@ -56,7 +56,8 @@
         <div class="mainContainer">
             <div class="img"><img src="{{ asset('images/login-banner.png') }}" alt=""></div>
             <div class="formContainer rounded p-4 ">
-                <form action="">
+                <form action="{{ route('patientRegister') }}" method="post">
+                    @csrf
                     <div class="header  mx-auto">
                         <h1>Inscription</h1>
                         <a href="">Vous êtes un doctor ?</a>
@@ -88,44 +89,74 @@
                             </div>
                             <div class="flex mt-2">
                                 <div class="flex items-center me-4">
-                                    <input id="inline-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800  dark:bg-gray-700 dark:border-gray-600">
+                                    <input id="inline-radio" type="radio" required value="{{ old('genre') }}" value="femmme" name="genre" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800  dark:bg-gray-700 dark:border-gray-600">
                                     <label for="inline-radio" class="ms-2 text-xs font-medium text-gray-800 ">Femme</label>
                                 </div>
                                 <div class="flex items-center me-4">
-                                    <input id="inline-2-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-xs text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800  dark:bg-gray-700 dark:border-gray-600">
+                                    <input id="inline-2-radio" type="radio" value="homme" name="genre" class="w-4 h-4 text-xs text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800  dark:bg-gray-700 dark:border-gray-600">
                                     <label for="inline-2-radio" class="ms-2 text-xs font-medium text-gray-800">Homme</label>
                                 </div>
                             </div>
                         </div>
-                        <label for="UserEmail" class="relative block overflow-hidden rounded-md border border-gray-200 px-3 pt-3 shadow-sm focus-within:border-gary-300 focus-within:ring-1 focus-within:ring-gray-300 mt-4">
-                            <input type="text" placeholder="Nom" class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm" />
+                        <label for="UserEmail" class="relative block overflow-hidden rounded-md border border-gray-200 px-3 pt-3 shadow-sm focus-within:border-gary-300 focus-within:ring-1 focus-within:ring-gray-300 mt-4
+                        @error('nom') border-red-600 focus-within:border-red-600 focus-within:ring-red-600 @else border-gray-200 @enderror">
+                            <input type="text" placeholder="Nom" name="nom" value="{{ old('nom') }}" class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm" />
                             <span class="absolute start-3 top-3 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs">
                                 Nom
                             </span>
                         </label>
-                        <label for="UserEmail" class="relative block overflow-hidden rounded-md border border-gray-200 px-3 pt-3 shadow-sm focus-within:border-gary-300 focus-within:ring-1 focus-within:ring-gray-300 mt-4">
-                            <input type="text" placeholder="Prénom" class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm" />
+                        @error('nom')
+                        <div class="text-red-600 text-sm mt-2">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                        <label for="UserEmail" class="relative block overflow-hidden rounded-md border border-gray-200 px-3 pt-3 shadow-sm focus-within:border-gary-300 focus-within:ring-1 focus-within:ring-gray-300 mt-4
+                        @error('prenom') border-red-600 focus-within:border-red-600 focus-within:ring-red-600 @else border-gray-200 @enderror">
+                            <input type="text" name="prenom" placeholder="Prénom" value="{{old('prenom')}}" class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm" />
                             <span class="absolute start-3 top-3 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs">
                                 Prénom
                             </span>
                         </label>
-                        <label for="UserEmail" class="relative block overflow-hidden rounded-md border border-gray-200 px-3 pt-3 shadow-sm focus-within:border-gary-300 focus-within:ring-1 focus-within:ring-gray-300 mt-4">
-                            <input type="email" id="UserEmail" placeholder="Email" class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm" />
+                        @error('prenom')
+                        <div class="text-red-600 text-sm mt-2">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                        <label for="UserEmail" class="relative block overflow-hidden rounded-md border border-gray-200 px-3 pt-3 shadow-sm focus-within:border-gary-300 focus-within:ring-1 focus-within:ring-gray-300 mt-4
+                        @error('email') border-red-600 focus-within:border-red-600 focus-within:ring-red-600 @else border-gray-200 @enderror">
+                            <input type="email" name="email" id="UserEmail" placeholder="Email" value="{{old('email')}}" class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm" />
                             <span class="absolute start-3 top-3 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs">
                                 Email
                             </span>
                         </label>
+                        @error('email')
+                        <div class="text-red-600 text-sm mt-2">
+                            {{ $message }}
+                        </div>
+                        @enderror
                         <div class="div">
-                            <input type="phone" id="phone" class="block p-2.5 w-full z-20 text-sm rounded-e-lg   focus:outline-none
+                            <input type="phone" id="phone" value="{{ old('numéro') }}" name="numéro" class="block p-2.5 w-full z-20 text-sm rounded-e-lg   focus:outline-none
                             px-3 pt-3 overflow-hidden rounded-md border border-gray-200 shadow-sm focus-within:border-gary-300 focus-within:ring-1 focus-within:ring-gray-300 phone
+                            @error('password') border-red-600 focus-within:border-red-600 focus-within:ring-red-600 @else border-gray-200 @enderror
                             " placeholder="Numéro de mobile" required />
                         </div>
-                        <label for="UserPassword" class="relative block overflow-hidden rounded-md border border-gray-200 px-3 pt-3 shadow-sm focus-within:border-gary-300 focus-within:ring-1 focus-within:ring-gray-300 mt-4">
-                            <input type="password" id="UserPassword" placeholder="mot de passe" class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm" />
+                        @error('numéro')
+                        <div class="text-red-600 text-sm mt-2">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                        <label for="UserPassword" class="relative block overflow-hidden rounded-md border px-3 pt-3 shadow-sm focus-within:border-gray-300 focus-within:ring-1 focus-within:ring-gray-300 mt-4 
+                        @error('password') border-red-600 focus-within:border-red-600 focus-within:ring-red-600 @else border-gray-200 @enderror">
+                            <input type="password" id="UserPassword" name="password" value="{{ old('password') }}" placeholder="mot de passe" class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm" />
                             <span class="absolute start-3 top-3 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs">
                                 Mot de passe
                             </span>
                         </label>
+                        @error('password')
+                        <div class="text-red-600 text-sm mt-2">
+                            {{ $message }}
+                        </div>
+                        @enderror
                         <div class="flex items-start mb-5 mt-4">
                             <div class="flex items-center h-5">
                                 <input id="terms" type="checkbox" value="" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800" required />
@@ -137,9 +168,8 @@
                 </form>
             </div>
         </div>
+        
     </div>
-
-
 
 
 </body>
