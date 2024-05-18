@@ -47,9 +47,9 @@ class PatientController extends Controller
 
         if ($patient->save()) {
             $request->session()->regenerate(); 
-            return redirect()->route('patientHome');
+            return redirect()->route('home');
         } else {
-            return redirect()->route('patientHome');
+            return redirect()->route('home');
         }
     }
 }

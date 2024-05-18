@@ -21,4 +21,12 @@ Route::post('patientRegister', [App\Http\Controllers\PatientController::class ,'
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
-->name('patientHome');
+->name('home');
+
+//login
+Route::get('/login', function(){
+    return view('login');
+});
+
+Route::post('/login', [App\Http\Controllers\LoginController::class, 'login'])
+->name('login');
