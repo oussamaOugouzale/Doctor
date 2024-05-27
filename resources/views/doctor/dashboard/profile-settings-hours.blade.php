@@ -1028,7 +1028,7 @@
                                                     <div class="form-wrap">
                                                         <label class="col-form-label">à <span class="text-danger">*</span></label>
                                                         <div class="form-icon">
-                                                            <input type="text" name="horaires[samedi][fin_premiere]"  class="form-control timepicker1">
+                                                            <input type="text" name="horaires[samedi][fin_premiere]" class="form-control timepicker1">
                                                             <span class="icon"><i class="fa-solid fa-clock"></i></span>
                                                         </div>
                                                     </div>
@@ -1040,7 +1040,7 @@
                                                     <div class="form-wrap">
                                                         <label class="col-form-label">De <span class="text-danger">*</span></label>
                                                         <div class="form-icon">
-                                                            <input type="text" name="horaires[samedi][debut_deuxieme]"  class="form-control timepicker1">
+                                                            <input type="text" name="horaires[samedi][debut_deuxieme]" class="form-control timepicker1">
                                                             <span class="icon"><i class="fa-solid fa-clock"></i></span>
                                                         </div>
                                                     </div>
@@ -1049,7 +1049,7 @@
                                                     <div class="form-wrap">
                                                         <label class="col-form-label">à <span class="text-danger">*</span></label>
                                                         <div class="form-icon">
-                                                            <input type="text" name="horaires[samedi][fin_deuxieme]"  class="form-control timepicker1">
+                                                            <input type="text" name="horaires[samedi][fin_deuxieme]" class="form-control timepicker1">
                                                             <span class="icon"><i class="fa-solid fa-clock"></i></span>
                                                         </div>
                                                     </div>

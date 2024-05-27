@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Doctor;
 use Illuminate\Http\Request;
 use App\Models\Patient;
 use Illuminate\Support\Facades\Hash;
@@ -21,22 +22,36 @@ class LoginController extends Controller
                 'password' => 'required'
             ]
         );
+
         $email = $request->email;
         $password = $request->password;
-        $patient = Patient::where('email', $email)->first();
 
-        if ($patient == null) {
-            return back()->WithInput(['password' => $password])->withErrors([
+        
+        $patient = Patient::where('email', $email)->first();
+        $doctor = Doctor::where('email', $email)->first();
+
+        if ($patient) {
+            if (Hash::check($password, $patient->password)) {
+                auth()->guard('patient')->login($patient);
+                return redirect()->route('home');
+            } else {
+                return back()->withInput()->withErrors([
+                    'password' => 'Mot de passe invalide'
+                ]);
+            }
+        } elseif ($doctor) {
+            if (Hash::check($password, $doctor->password)) {
+                auth()->guard('doctor')->login($doctor);
+                return redirect()->route('dashboard');
+            } else {
+                return back()->withInput()->withErrors([
+                    'password' => 'Mot de passe invalide'
+                ]);
+            }
+        } else {
+            return back()->withInput()->withErrors([
                 'email' => 'Aucun utilisateur trouvé'
             ]);
-        } else {
-            if (!Hash::check($password, $patient->password))
-                return back()->WithInput(['email' => $email])->withErrors([
-                    'password' => 'mot de passe invalide'
-                ]);
-            else {
-                return redirect()->route('home');
-            }
         }
     }
 }

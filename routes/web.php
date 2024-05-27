@@ -35,7 +35,7 @@ Route::post('/login', [App\Http\Controllers\LoginController::class, 'login'])
 
 Route::get('dashboard/', function () {
     return view('doctor.dashboard.dashboard');
-});
+})->name('dashboard');
 
 Route::get('index/', function () {
     return view('doctor.dashboard.index');
