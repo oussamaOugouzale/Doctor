@@ -18,7 +18,7 @@ class Horaire extends Model
         'fin_deuxième',
         'disponible_première',
         'disponible_deuxième',
-        'id_doctor',
+        'doctor_id',
     ];
 
     protected $guarded = [

@@ -16,6 +16,15 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
+        // Doctor::create([
+        //     'nom'=> 'doc1',
+        //     'prenom'=> 'docp1',
+        //     'numero_tel'=> '3333333',
+        //     'email'=> 'doc@gmail.com',
+        //     'password'=> Hash::make('Doc2004@2004'),
+        //     'photo'=> 'photo',
+            
+        // ]);
         $request->validate(
             [
                 'email' => 'required|email',
@@ -26,7 +35,7 @@ class LoginController extends Controller
         $email = $request->email;
         $password = $request->password;
 
-        
+
         $patient = Patient::where('email', $email)->first();
         $doctor = Doctor::where('email', $email)->first();
 
@@ -41,7 +50,7 @@ class LoginController extends Controller
             }
         } elseif ($doctor) {
             if (Hash::check($password, $doctor->password)) {
-                auth()->guard('doctor')->login($doctor);
+                Auth::guard('doctor')->login($doctor);
                 return redirect()->route('dashboard');
             } else {
                 return back()->withInput()->withErrors([
@@ -53,6 +62,13 @@ class LoginController extends Controller
                 'email' => 'Aucun utilisateur trouvé'
             ]);
         }
+    }
+
+    public function logout(){
+        Auth::guard('doctor')->logout();
+        
+
+        return redirect()->back();
     }
 }
 

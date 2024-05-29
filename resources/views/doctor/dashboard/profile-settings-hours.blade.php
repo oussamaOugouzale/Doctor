@@ -514,8 +514,6 @@
                                 </div>
                             </div>
                         </li>
-
-
                         <li class="nav-item dropdown has-arrow logged-item">
                             <a href="javascript:;" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                                 <span class="user-img">
@@ -528,17 +526,19 @@
                                         <img src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image" class="avatar-img rounded-circle">
                                     </div>
                                     <div class="user-text">
-                                        <h6>Darren Elder</h6>
+                                        <h6>{{ Auth::guard('doctor')->user()->nom .' '. Auth::guard('doctor')->user()->prenom}}</h6>
                                         <p class="text-muted mb-0">Doctor</p>
                                     </div>
                                 </div>
                                 <a class="dropdown-item" href="doctor-dashboard.html">Dashboard</a>
                                 <a class="dropdown-item" href="doctor-profile-settings.html">Profile
                                     Settings</a>
-                                <a class="dropdown-item" href="login.html">Logout</a>
+                                <form id="logout-form" action="{{route('doctorLogout')}}" style="display: none">
+                                    @csrf
+                                </form>
+                                <a class="dropdown-item" href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Logout</a>
                             </div>
                         </li>
-
                     </ul>
                 </nav>
             </div>
@@ -680,10 +680,12 @@
                                             </a>
                                         </li>
                                         <li class>
-                                            <a href="login.html">
-                                                <i class="fa-solid fa-calendar-check"></i>
-                                                <span>Logout</span>
-                                            </a>
+                                            <form action="">
+                                                <a href="login.html">
+                                                    <i class="fa-solid fa-calendar-check"></i>
+                                                    <span>Logout</span>
+                                                </a>
+                                            </form>
                                         </li>
                                     </ul>
                                 </nav>
@@ -728,6 +730,18 @@
                         <div class="dashboard-header border-0 mb-0">
                             <h3>Horaires d'ouverture</h3>
                         </div>
+                        @if(session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        @endif
+                        @if(session('error'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ session('error') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        @endif
                         <form action="{{route('set-profile-hours-settings')}}" method="POST">
                             @csrf
                             <div class="business-wrap">
@@ -754,10 +768,22 @@
                                 </ul>
                             </div>
                             <div class="accordions business-info" id="list-accord">
-
-                                <div class="user-accordion-item tab-items active" id="day-monday">
-                                    <a href="#" class="accordion-wrap" data-bs-toggle="collapse" data-bs-target="#monday">Lundi<span class="edit">Modifier</span></a>
-                                    <div class="accordion-collapse collapse show" id="monday" data-bs-parent="#list-accord">
+                                @if(isset($horaires) && $horaires->isNotEmpty())
+                                @php
+                                $days_translation = [
+                                'lundi' => 'monday',
+                                'mardi' => 'tuesday',
+                                'mercredi' => 'wednesday',
+                                'jeudi' => 'thursday',
+                                'vendredi' => 'friday',
+                                'samedi' => 'saturday',
+                                'dimanche' => 'Sunday'
+                                ];
+                                @endphp
+                                @foreach($horaires as $horaire)
+                                <div class="user-accordion-item tab-items active" id="day-{{$horaire->jour}}">
+                                    <a href="#" class="accordion-wrap" data-bs-toggle="collapse" data-bs-target="#{{$horaire->jour}}">{{$horaire->jour}}<span class="edit">Modifier</span></a>
+                                    <div class="accordion-collapse collapse show" id="{{$horaire->jour}}" data-bs-parent="#list-accord">
                                         <div class="content-collapse pb-0">
                                             <div class="row align-items-center">
                                                 <h5 class="">Première séance:</h5>
@@ -765,7 +791,7 @@
                                                     <div class="form-wrap">
                                                         <label class="col-form-label">De <span class="text-danger">*</span></label>
                                                         <div class="form-icon">
-                                                            <input type="text" name="horaires[lundi][debut_premiere]" class="form-control timepicker1">
+                                                            <input type="text" value="{{$horaire->debut_première}}" name="horaires[{{$horaire->jour}}][debut_premiere]" class="form-control timepicker1">
                                                             <span class="icon"><i class="fa-solid fa-clock"></i></span>
                                                         </div>
                                                     </div>
@@ -774,7 +800,7 @@
                                                     <div class="form-wrap">
                                                         <label class="col-form-label">à <span class="text-danger">*</span></label>
                                                         <div class="form-icon">
-                                                            <input type="text" name="horaires[lundi][fin_premiere]" class="form-control timepicker1">
+                                                            <input type="text" value="{{$horaire->fin_première}}" name="horaires[{{$horaire->jour}}][fin_premiere]" class="form-control timepicker1">
                                                             <span class="icon"><i class="fa-solid fa-clock"></i></span>
                                                         </div>
                                                     </div>
@@ -786,7 +812,7 @@
                                                     <div class="form-wrap">
                                                         <label class="col-form-label">De <span class="text-danger">*</span></label>
                                                         <div class="form-icon">
-                                                            <input type="text" name="horaires[lundi][debut_deuxieme]" class="form-control timepicker1">
+                                                            <input type="text" value="{{$horaire->debut_deuxième}}" name="horaires[{{$horaire->jour}}][debut_deuxieme]" class="form-control timepicker1">
                                                             <span class="icon"><i class="fa-solid fa-clock"></i></span>
                                                         </div>
                                                     </div>
@@ -795,7 +821,7 @@
                                                     <div class="form-wrap">
                                                         <label class="col-form-label">à <span class="text-danger">*</span></label>
                                                         <div class="form-icon">
-                                                            <input type="text" name="horaires[lundi][fin_deuxieme]" class="form-control timepicker1">
+                                                            <input type="text" value="{{$horaire->fin_deuxième}}" name="horaires[{{$horaire->jour}}][fin_deuxieme]" class="form-control timepicker1">
                                                             <span class="icon"><i class="fa-solid fa-clock"></i></span>
                                                         </div>
                                                     </div>
@@ -805,260 +831,8 @@
                                     </div>
                                 </div>
 
-
-                                <div class="user-accordion-item tab-items active" id="day-tuesday">
-                                    <a href="#" class="accordion-wrap collapsed" data-bs-toggle="collapse" data-bs-target="#tuesday">Mardi<span class="edit">Modifier</span></a>
-                                    <div class="accordion-collapse collapse" id="tuesday" data-bs-parent="#list-accord">
-                                        <div class="content-collapse pb-0">
-                                            <div class="row align-items-center">
-                                                <h5 class="">Première séance:</h5>
-                                                <div class="col-md-6">
-                                                    <div class="form-wrap">
-                                                        <label class="col-form-label">De <span class="text-danger">*</span></label>
-                                                        <div class="form-icon">
-                                                            <input type="text" name="horaires[mardi][debut_premiere]" class="form-control timepicker1">
-                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-wrap">
-                                                        <label class="col-form-label">à <span class="text-danger">*</span></label>
-                                                        <div class="form-icon">
-                                                            <input type="text" name="horaires[mardi][fin_premiere]" class="form-control timepicker1">
-                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row align-items-center">
-                                                <h5 class="">Deuxième séance:</h5>
-                                                <div class="col-md-6">
-                                                    <div class="form-wrap">
-                                                        <label class="col-form-label">De <span class="text-danger">*</span></label>
-                                                        <div class="form-icon">
-                                                            <input type="text" name="horaires[mardi][debut_deuxieme]" class="form-control timepicker1">
-                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-wrap">
-                                                        <label class="col-form-label">à <span class="text-danger">*</span></label>
-                                                        <div class="form-icon">
-                                                            <input type="text" name="horaires[mardi][fin_deuxieme]" class="form-control timepicker1">
-                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="user-accordion-item tab-items active" id="day-wednesday">
-                                    <a href="#" class="accordion-wrap collapsed" data-bs-toggle="collapse" data-bs-target="#wednesday">Mercredi<span class="edit">Modifier</span></a>
-                                    <div class="accordion-collapse collapse" id="wednesday" data-bs-parent="#list-accord">
-                                        <div class="content-collapse pb-0">
-                                            <div class="row align-items-center">
-                                                <h5 class="">Première séance:</h5>
-                                                <div class="col-md-6">
-                                                    <div class="form-wrap">
-                                                        <label class="col-form-label">De <span class="text-danger">*</span></label>
-                                                        <div class="form-icon">
-                                                            <input type="text" name="horaires[mercredi][debut_premiere]" class="form-control timepicker1">
-                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-wrap">
-                                                        <label class="col-form-label">à <span class="text-danger">*</span></label>
-                                                        <div class="form-icon">
-                                                            <input type="text" name="horaires[mercredi][fin_premiere]" class="form-control timepicker1">
-                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row align-items-center">
-                                                <h5 class="">Deuxème séance:</h5>
-                                                <div class="col-md-6">
-                                                    <div class="form-wrap">
-                                                        <label class="col-form-label">De <span class="text-danger">*</span></label>
-                                                        <div class="form-icon">
-                                                            <input type="text" name="horaires[mercredi][debut_deuxieme]" class="form-control timepicker1">
-                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-wrap">
-                                                        <label class="col-form-label">à <span class="text-danger">*</span></label>
-                                                        <div class="form-icon">
-                                                            <input type="text" name="horaires[mercredi][fin_deuxieme]" class="form-control timepicker1">
-                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="user-accordion-item tab-items active" id="day-thursday">
-                                    <a href="#" class="accordion-wrap collapsed" data-bs-toggle="collapse" data-bs-target="#thursday">Jeudi<span class="edit">Modifier</span></a>
-                                    <div class="accordion-collapse collapse" id="thursday" data-bs-parent="#list-accord">
-                                        <div class="content-collapse pb-0">
-                                            <div class="row align-items-center">
-                                                <h5 class="">Première séance:</h5>
-                                                <div class="col-md-6">
-                                                    <div class="form-wrap">
-                                                        <label class="col-form-label">De <span class="text-danger">*</span></label>
-                                                        <div class="form-icon">
-                                                            <input type="text" name="horaires[jeudi][debut_premiere]" class="form-control timepicker1">
-                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-wrap">
-                                                        <label class="col-form-label">à <span class="text-danger">*</span></label>
-                                                        <div class="form-icon">
-                                                            <input type="text" name="horaires[jeudi][fin_premiere]" class="form-control timepicker1">
-                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row align-items-center">
-                                                <h5 class="">Deuxième séance:</h5>
-                                                <div class="col-md-6">
-                                                    <div class="form-wrap">
-                                                        <label class="col-form-label">De <span class="text-danger">*</span></label>
-                                                        <div class="form-icon">
-                                                            <input type="text" name="horaires[jeudi][debut_deuxieme]" class="form-control timepicker1">
-                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-wrap">
-                                                        <label class="col-form-label">à <span class="text-danger">*</span></label>
-                                                        <div class="form-icon">
-                                                            <input type="text" name="horaires[jeudi][fin_deuxieme]" class="form-control timepicker1">
-                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="user-accordion-item tab-items active" id="day-friday">
-                                    <a href="#" class="accordion-wrap collapsed" data-bs-toggle="collapse" data-bs-target="#friday">Vendredi<span class="edit">Modifier</span></a>
-                                    <div class="accordion-collapse collapse" id="friday" data-bs-parent="#list-accord">
-                                        <div class="content-collapse pb-0">
-                                            <div class="row align-items-center">
-                                                <h5 class="">Première séance:</h5>
-                                                <div class="col-md-6">
-                                                    <div class="form-wrap">
-                                                        <label class="col-form-label">De <span class="text-danger">*</span></label>
-                                                        <div class="form-icon">
-                                                            <input type="text" name="horaires[vendredi][debut_premiere]" class="form-control timepicker1">
-                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-wrap">
-                                                        <label class="col-form-label">à <span class="text-danger">*</span></label>
-                                                        <div class="form-icon">
-                                                            <input type="text" name="horaires[vendredi][fin_premiere]" class="form-control timepicker1">
-                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row align-items-center">
-                                                <h5 class="">Deuxième séance:</h5>
-                                                <div class="col-md-6">
-                                                    <div class="form-wrap">
-                                                        <label class="col-form-label">De <span class="text-danger">*</span></label>
-                                                        <div class="form-icon">
-                                                            <input type="text" name="horaires[vendredi][debut_deuxieme]" class="form-control timepicker1">
-                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-wrap">
-                                                        <label class="col-form-label">à <span class="text-danger">*</span></label>
-                                                        <div class="form-icon">
-                                                            <input type="text" name="horaires[vendredi][fin_deuxieme]" class="form-control timepicker1">
-                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="user-accordion-item tab-items" id="day-saturday">
-                                    <a href="#" class="accordion-wrap collapsed" data-bs-toggle="collapse" data-bs-target="#saturday">Samedi<span class="edit">Modifier</span></a>
-                                    <div class="accordion-collapse collapse" id="saturday" data-bs-parent="#list-accord">
-                                        <div class="content-collapse pb-0">
-                                            <div class="row align-items-center">
-                                                <h5 class="">Première séance:</h5>
-                                                <div class="col-md-6">
-                                                    <div class="form-wrap">
-                                                        <label class="col-form-label">De <span class="text-danger">*</span></label>
-                                                        <div class="form-icon">
-                                                            <input type="text" name="horaires[samedi][debut_premiere]" class="form-control timepicker1">
-                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-wrap">
-                                                        <label class="col-form-label">à <span class="text-danger">*</span></label>
-                                                        <div class="form-icon">
-                                                            <input type="text" name="horaires[samedi][fin_premiere]" class="form-control timepicker1">
-                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row align-items-center">
-                                                <h5 class="">Deuxième séance:</h5>
-                                                <div class="col-md-6">
-                                                    <div class="form-wrap">
-                                                        <label class="col-form-label">De <span class="text-danger">*</span></label>
-                                                        <div class="form-icon">
-                                                            <input type="text" name="horaires[samedi][debut_deuxieme]" class="form-control timepicker1">
-                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-wrap">
-                                                        <label class="col-form-label">à <span class="text-danger">*</span></label>
-                                                        <div class="form-icon">
-                                                            <input type="text" name="horaires[samedi][fin_deuxieme]" class="form-control timepicker1">
-                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                @endforeach
+                                @endif
                             </div>
                             <div class="modal-btn text-end">
                                 <a href="#" class="btn btn-gray">Annuler</a>
@@ -1204,6 +978,7 @@
 
     <script src="{{ asset('assets/plugins/theia-sticky-sidebar/ResizeSensor.js') }}" type="a3af23efa9a8f95e5c98a8cc-text/javascript"></script>
     <script src="{{ asset('assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js') }}" type="a3af23efa9a8f95e5c98a8cc-text/javascript"></script>
+
 
     <script src="{{ asset('assets/js/moment.min.js') }}" type="a3af23efa9a8f95e5c98a8cc-text/javascript"></script>
     <script src="{{ asset('assets/js/bootstrap-datetimepicker.min.js') }}" type="a3af23efa9a8f95e5c98a8cc-text/javascript"></script>

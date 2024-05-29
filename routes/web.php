@@ -24,36 +24,40 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
     ->name('home');
 
 //login
-Route::get('/login', function () {
+Route::get('/connexion', function () {
     return view('login');
-});
+})->name('loginForm');
 
 Route::post('/login', [App\Http\Controllers\LoginController::class, 'login'])
     ->name('login');
 
 //dashboard
 
-Route::get('dashboard/', function () {
-    return view('doctor.dashboard.dashboard');
-})->name('dashboard');
 
-Route::get('index/', function () {
-    return view('doctor.dashboard.index');
-});
 
-Route::get('/profile-settings-hours', function () {
-    return view('doctor.dashboard.profile-settings-hours');
-})->name('profile-settings-hours');
-
-Route::get('/profile-settings-details', function () {
-    return view('doctor.dashboard.profile-settings-details');
-})->name('profile-settings-details');
-
-Route::get('/profile-settings-experiences', function () {
-    return view('doctor.dashboard.profile-settings-experiences');
-})->name('profile-settings-experiences');
 
 // doctor hours 
 
-Route::post('/set-profile-hours-settings', [App\Http\Controllers\HoraireController::class, 'update'])
-->name('set-profile-hours-settings');
+Route::middleware('auth')->group(function () {
+    Route::post('/set-profile-hours-settings', [App\Http\Controllers\HoraireController::class, 'update'])
+        ->name('set-profile-hours-settings');
+    Route::get('dashboard/', function () {
+        return view('doctor.dashboard.dashboard');
+    })->name('dashboard');
+    Route::middleware('doctorMiddleware')->group(function () {
+        Route::get('/profile-settings-hours', function () {
+            return view('doctor.dashboard.profile-settings-hours');
+        })->name('profile-settings-hours');
+    });
+    Route::get('/profile-settings-details', function () {
+        return view('doctor.dashboard.profile-settings-details');
+    })->name('profile-settings-details');
+
+    Route::get('/profile-settings-experiences', function () {
+        return view('doctor.dashboard.profile-settings-experiences');
+    })->name('profile-settings-experiences');
+
+    //logout
+    Route::get('/doctor-logout', [App\Http\Controllers\LoginController::class, 'logout'])
+        ->name('doctorLogout');
+});

@@ -1,9 +1,10 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from doccure.dreamstechnologies.com/laravel/template/public/doctor-dashboard by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 19 May 2024 01:33:18 GMT -->
-<!-- Added by HTTrack -->
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 
 <head>
     <meta charset="utf-8">

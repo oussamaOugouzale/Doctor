@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('horaires', function(Blueprint $table){
             $table->id();
             $table->string('jour');
-            $table->string('debut_première');
-            $table->string('fin_première');
-            $table->string('debut_deuxième');
-            $table->string('fin_deuxième');
+            $table->string('debut_première')->nullable();
+            $table->string('fin_première')->nullable();
+            $table->string('debut_deuxième')->nullable();
+            $table->string('fin_deuxième')->nullable();
             $table->string('disponible_première');
             $table->string('disponible_deuxième');
             $table->unsignedBigInteger('doctor_id');
