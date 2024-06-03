@@ -17,7 +17,6 @@ class DoctorMiddleware
     {
         $user = Auth::guard('doctor')->user();
         $horaires = $user->horaires()->get();
-
         return response()->view('doctor.dashboard.profile-settings-hours', ['horaires' =>$horaires]);
     }
 }

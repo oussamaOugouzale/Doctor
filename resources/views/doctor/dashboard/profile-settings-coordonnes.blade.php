@@ -703,13 +703,13 @@
                             <div class="appointment-tabs">
                                 <ul class="nav">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="{{route('profile-settings-details')}}">Informations personnelles</a>
+                                        <a class="nav-link" href="{{route('profile-settings-details')}}">Informations personnelles</a>
+                                    </li>
+                                    <li class="nav-item ">
+                                        <a class="nav-link active" href="{{route('profile-settings-coordonnes')}}">Coordonnées</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{route('profile-settings-coordonnes')}}">Coordonnées</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="">Education</a>
+                                        <a class="nav-link" href="{{route('profile-settings-formations')}}">Spécialités</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="">Awards</a>
@@ -726,96 +726,76 @@
                                 </ul>
                             </div>
                         </div>
-
-                        <div class="setting-title">
-                            <h5>Profile</h5>
-                        </div>
-                        <form action="{{route('doctorInformations')}}" method="POST" enctype="multipart/form-data">
+                        
+                        <form action="{{route('doctorCoordonnes')}}" method="POST" >
                             @csrf
-                            <div class="setting-card">
-                                @if(session('success'))
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    {{ session('success') }}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                                @endif
-                                @if(session('error'))
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    {{ session('error') }}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                                @endif
-                                <div class="change-avatar img-upload">
-                                    <div class="profile-img">
-                                        <i class="fa-solid fa-file-image" id="icon"></i>
-                                        <img id="preview" src="#" alt="Image de Profil" style="display: none; max-width: 100px; max-height: 100px;" />
-                                    </div>
-                                    <div class="upload-img">
-                                        <h5>Image de Profil</h5>
-                                        <div class="imgs-load d-flex align-items-center">
-                                            <div class="change-photo">
-                                                Importer une image
-                                                <input type="file" required class="upload" name="photo" accept=".jpg, .png, .svg" onchange="previewImage(event)">
-                                            </div>
-                                        </div>
-                                        <p class="form-text">Votre image doit être inférieure à 4 Mo, formats acceptés : jpg, png, svg</p>
-                                    </div>
-                                </div>
+                            @if(session('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ session('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
+                            @endif
+                            @if(session('error'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ session('error') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            @endif
 
                             <div class="setting-title">
-                                <h5>INFORMATIONS PERSONELLES
+                                <h5>COORDONNÉES
                                 </h5>
                             </div>
                             <div class="setting-card">
                                 <div class="row">
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-wrap">
-                                            <label class="col-form-label">Genre <span class="text-danger">*</span></label>
-                                            <select class="form-control" required name="genre">
-                                                <option value="" disabled selected>Genre</option>
-                                                <option value="homme" {{ Auth::guard('doctor')->user()->genre === 'homme' ? 'selected' : '' }}>Homme</option>
-                                                <option value="femme" {{ Auth::guard('doctor')->user()->genre === 'femme' ? 'selected' : '' }}>Femme</option>
-                                            </select>
+                                            <label class="col-form-label">Adresse <span class="text-danger">*</span></label>
+                                            <input type="text" required value="{{ Auth::guard('doctor')->user()->coordonnes ? Auth::guard('doctor')->user()->coordonnes->adresse : '' }}" placeholder="Rue, étage, centre ..." required name="adresse" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-wrap">
-                                            <label class="col-form-label">Nom <span class="text-danger">*</span></label>
-                                            <input type="text" value="{{Auth::guard('doctor')->user()->nom}}" required name="nom" class="form-control">
+                                            <label class="col-form-label">Ville <span class="text-danger">*</span></label>
+                                            <input type="text" required value="{{ Auth::guard('doctor')->user()->coordonnes ? Auth::guard('doctor')->user()->coordonnes->ville : '' }}" required name="ville" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-wrap">
-                                            <label class="col-form-label">Prénom <span class="text-danger">*</span></label>
-                                            <input type="text" value="{{Auth::guard('doctor')->user()->prenom}}" required name="prenom" class="form-control">
+                                            <label class="col-form-label">Délégation <span class="text-danger">*</span></label>
+                                            <input type="text" required value="{{ Auth::guard('doctor')->user()->coordonnes ? Auth::guard('doctor')->user()->coordonnes->delegation : '' }}" required name="delegation" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-wrap">
-                                            <label class="col-form-label">numéro de téléphone <span class="text-danger">*</span></label>
-                                            <input type="text" value="{{Auth::guard('doctor')->user()->numero_tel}}" required name="numero_tel" class="form-control">
+                                            <label class="col-form-label">téléphone fixe <span class="text-danger">*</span></label>
+                                            <input type="text" required value="{{ Auth::guard('doctor')->user()->coordonnes ? Auth::guard('doctor')->user()->coordonnes->tele_fixe : '' }}" required name="tele_fixe" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-lg-4 col-md-6">
                                         <div class="form-wrap">
-                                            <label class="col-form-label">Adresse email <span class="text-danger">*</span></label>
-                                            <input type="email" value="{{Auth::guard('doctor')->user()->email}}" required name="email" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-wrap">
-                                            <label class="col-form-label">Languages parlés <span class="text-danger">*</span></label>
+                                            <label class="col-form-label">téléphone mobile <span class="text-danger">*</span></label>
                                             <div class="input-block input-block-new mb-0">
-                                                <input name="languages" value="{{Auth::guard('doctor')->user()->languages}}" required class="input-tags form-control" id="inputBox3" type="text" data-role="tagsinput" placeholder="Type New" name="Label" value="Français, Anglais">
+                                                <input name="tele_mobile" required value="{{ Auth::guard('doctor')->user()->coordonnes ? Auth::guard('doctor')->user()->coordonnes->tele_mobile : '' }}" required class="input-tags form-control" id="inputBox3" type="text" data-role="tagsinput" name="tele_mobile">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12 mt-5">
+                                    <div class="col-lg-4 col-md-6">
                                         <div class="form-wrap">
-                                            <p>Pour des raisons de sécurité et afin de nous assurer de la pertinence des données sur notre plateforme, nous vous prions de nous envoyer une photo de votre carte de visite tamponnée ou bien votre permis d'exercice.</p>
-                                            <label class="col-form-label">Import le Document <span class="text-danger">*</span></label>
-                                            <input type="file" required class="form-control" name="document" accept="image/*">
+                                            <label class="col-form-label">Latitude <span class="text-danger">*</span></label>
+                                            <input type="text" required value="{{ Auth::guard('doctor')->user()->coordonnes ? Auth::guard('doctor')->user()->coordonnes->latitude : '' }}" id="latitude" name="latitude" class="form-control" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-wrap">
+                                            <label class="col-form-label">Longitude <span class="text-danger">*</span></label>
+                                            <input type="text" required value="{{ Auth::guard('doctor')->user()->coordonnes ? Auth::guard('doctor')->user()->coordonnes->longitude : '' }}" id="longitude" name="longitude" class="form-control" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="form-wrap">
+                                            <label class="col-form-label">Géolocalisation <span class="text-danger">*</span></label>
+                                            <button type="button" class="btn btn-primary" onclick="getLocation()">Obtenir la géolocalisation</button>
                                         </div>
                                     </div>
                                 </div>
@@ -983,6 +963,22 @@
                 preview.style.display = 'none';
                 icon.style.display = 'block';
             }
+        }
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function showPosition(position) {
+            var latitudeInput = document.getElementById('latitude');
+            var longitudeInput = document.getElementById('longitude');
+
+            latitudeInput.value = position.coords.latitude;
+            longitudeInput.value = position.coords.longitude;
         }
 
     </script>

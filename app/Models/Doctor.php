@@ -16,7 +16,11 @@ class Doctor extends Authenticatable
         'numero_tel',
         'email',
         'password',
+        'genre',
         'photo',
+        'document',
+        'languages',
+        'partCompleted',
     ];
     protected $guarded = [
         'id'
@@ -24,5 +28,14 @@ class Doctor extends Authenticatable
 
     public function horaires(){
         return $this->hasMany(Horaire::class);
+    }
+    public function coordonnes(){
+        return $this->hasOne(Coordonne::class);
+    }
+    public function specialites(){
+        return $this->hasOne(Specialite::class);
+    }
+    public function formations(){
+        return $this->hasMany(Formation::class);
     }
 }

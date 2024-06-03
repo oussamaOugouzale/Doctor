@@ -703,13 +703,13 @@
                             <div class="appointment-tabs">
                                 <ul class="nav">
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="{{route('profile-settings-details')}}">Informations personnelles</a>
+                                        <a class="nav-link" href="{{route('profile-settings-details')}}">Informations personnelles</a>
+                                    </li>
+                                    <li class="nav-item ">
+                                        <a class="nav-link " href="{{route('profile-settings-coordonnes')}}">Coordonnées</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{route('profile-settings-coordonnes')}}">Coordonnées</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="">Education</a>
+                                        <a class="nav-link active" href="{{route('profile-settings-formations')}}">Spécialités</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="">Awards</a>
@@ -727,103 +727,159 @@
                             </div>
                         </div>
 
-                        <div class="setting-title">
-                            <h5>Profile</h5>
-                        </div>
-                        <form action="{{route('doctorInformations')}}" method="POST" enctype="multipart/form-data">
+
+                        @php
+                        $specialites = Auth::guard('doctor')->user()->specialites;
+                        $formations = Auth::guard('doctor')->user()->formations;
+                        @endphp
+
+                        <form action="{{ route('doctorFormation') }}" method="POST">
                             @csrf
-                            <div class="setting-card">
-                                @if(session('success'))
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    {{ session('success') }}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            @if(session('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {{ session('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            @endif
+                            @if(session('error'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ session('error') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            @endif
+
+                            <div id="education-forms">
+                                <div class="setting-title">
+                                    <h5>Spécialités</h5>
                                 </div>
-                                @endif
-                                @if(session('error'))
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    {{ session('error') }}
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
-                                @endif
-                                <div class="change-avatar img-upload">
-                                    <div class="profile-img">
-                                        <i class="fa-solid fa-file-image" id="icon"></i>
-                                        <img id="preview" src="#" alt="Image de Profil" style="display: none; max-width: 100px; max-height: 100px;" />
-                                    </div>
-                                    <div class="upload-img">
-                                        <h5>Image de Profil</h5>
-                                        <div class="imgs-load d-flex align-items-center">
-                                            <div class="change-photo">
-                                                Importer une image
-                                                <input type="file" required class="upload" name="photo" accept=".jpg, .png, .svg" onchange="previewImage(event)">
+                                <div class="setting-card">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-wrap">
+                                                <label class="col-form-label">Spécialité principale</label>
+                                                <input type="text" value="{{ $specialites ? $specialites->specialite : '' }}" class="form-control" name="specialite">
                                             </div>
                                         </div>
-                                        <p class="form-text">Votre image doit être inférieure à 4 Mo, formats acceptés : jpg, png, svg</p>
+                                        <div class="col-md-6">
+                                            <div class="form-wrap">
+                                                <label class="col-form-label">Autre spécialité</label>
+                                                <input type="text" value="{{ $specialites ? $specialites->autre_specialite : '' }}" class="form-control" name="autre_specialite">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
+                                <div class="setting-title">
+                                    <h5>COORDONNÉES</h5>
+                                </div>
+
+                                @if($formations->isEmpty())
+                                <div class="setting-card">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-wrap">
+                                                <label class="col-form-label">Nom de l'institution</label>
+                                                <input type="text" class="form-control" name="educations[0][institution_name]">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-wrap">
+                                                <label class="col-form-label">Formation</label>
+                                                <input type="text" class="form-control" name="educations[0][formation]">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6">
+                                            <div class="form-wrap">
+                                                <label class="col-form-label">Date de début <span class="text-danger">*</span></label>
+                                                <div class="form-icon">
+                                                    <input type="text" class="form-control datetimepicker" name="educations[0][start_date]">
+                                                    <span class="icon"><i class="fa-regular fa-calendar-days"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6">
+                                            <div class="form-wrap">
+                                                <label class="col-form-label">Date de fin <span class="text-danger">*</span></label>
+                                                <div class="form-icon">
+                                                    <input type="text" class="form-control datetimepicker" name="educations[0][end_date]">
+                                                    <span class="icon"><i class="fa-regular fa-calendar-days"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6">
+                                            <div class="form-wrap">
+                                                <label class="col-form-label">Nombre d'années <span class="text-danger">*</span></label>
+                                                <input type="text" class="form-control" name="educations[0][years]">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-wrap">
+                                                <label class="col-form-label">Description <span class="text-danger">*</span></label>
+                                                <textarea class="form-control" rows="3" name="educations[0][description]"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @else
+                                @foreach($formations as $index => $formation)
+                                <div class="setting-card">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-wrap">
+                                                <label class="col-form-label">Nom de l'institution</label>
+                                                <input type="text" value="{{ $formation->institution_name }}" class="form-control" name="educations[{{ $index }}][institution_name]">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-wrap">
+                                                <label class="col-form-label">Formation</label>
+                                                <input type="text" value="{{ $formation->formation }}" class="form-control" name="educations[{{ $index }}][formation]">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6">
+                                            <div class="form-wrap">
+                                                <label class="col-form-label">Date de début <span class="text-danger">*</span></label>
+                                                <div class="form-icon">
+                                                    <input type="text" value="{{ $formation->start_date }}" class="form-control datetimepicker" name="educations[{{ $index }}][start_date]">
+                                                    <span class="icon"><i class="fa-regular fa-calendar-days"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6">
+                                            <div class="form-wrap">
+                                                <label class="col-form-label">Date de fin <span class="text-danger">*</span></label>
+                                                <div class="form-icon">
+                                                    <input type="text" value="{{ $formation->end_date }}" class="form-control datetimepicker" name="educations[{{ $index }}][end_date]">
+                                                    <span class="icon"><i class="fa-regular fa-calendar-days"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6">
+                                            <div class="form-wrap">
+                                                <label class="col-form-label">Nombre d'années <span class="text-danger">*</span></label>
+                                                <input type="text" value="{{ $formation->years }}" class="form-control" name="educations[{{ $index }}][years]">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-wrap">
+                                                <label class="col-form-label">Description <span class="text-danger">*</span></label>
+                                                <textarea class="form-control" rows="3" name="educations[{{ $index }}][description]">{{ $formation->description }}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                                @endif
                             </div>
 
-                            <div class="setting-title">
-                                <h5>INFORMATIONS PERSONELLES
-                                </h5>
-                            </div>
-                            <div class="setting-card">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="form-wrap">
-                                            <label class="col-form-label">Genre <span class="text-danger">*</span></label>
-                                            <select class="form-control" required name="genre">
-                                                <option value="" disabled selected>Genre</option>
-                                                <option value="homme" {{ Auth::guard('doctor')->user()->genre === 'homme' ? 'selected' : '' }}>Homme</option>
-                                                <option value="femme" {{ Auth::guard('doctor')->user()->genre === 'femme' ? 'selected' : '' }}>Femme</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="form-wrap">
-                                            <label class="col-form-label">Nom <span class="text-danger">*</span></label>
-                                            <input type="text" value="{{Auth::guard('doctor')->user()->nom}}" required name="nom" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="form-wrap">
-                                            <label class="col-form-label">Prénom <span class="text-danger">*</span></label>
-                                            <input type="text" value="{{Auth::guard('doctor')->user()->prenom}}" required name="prenom" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="form-wrap">
-                                            <label class="col-form-label">numéro de téléphone <span class="text-danger">*</span></label>
-                                            <input type="text" value="{{Auth::guard('doctor')->user()->numero_tel}}" required name="numero_tel" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="form-wrap">
-                                            <label class="col-form-label">Adresse email <span class="text-danger">*</span></label>
-                                            <input type="email" value="{{Auth::guard('doctor')->user()->email}}" required name="email" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="form-wrap">
-                                            <label class="col-form-label">Languages parlés <span class="text-danger">*</span></label>
-                                            <div class="input-block input-block-new mb-0">
-                                                <input name="languages" value="{{Auth::guard('doctor')->user()->languages}}" required class="input-tags form-control" id="inputBox3" type="text" data-role="tagsinput" placeholder="Type New" name="Label" value="Français, Anglais">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 mt-5">
-                                        <div class="form-wrap">
-                                            <p>Pour des raisons de sécurité et afin de nous assurer de la pertinence des données sur notre plateforme, nous vous prions de nous envoyer une photo de votre carte de visite tamponnée ou bien votre permis d'exercice.</p>
-                                            <label class="col-form-label">Import le Document <span class="text-danger">*</span></label>
-                                            <input type="file" required class="form-control" name="document" accept="image/*">
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="modal-btn">
+                                <button type="button" class="btn btn-primary prime-btn" id="add-another">Ajouter une autre</button>
                             </div>
                             <div class="modal-btn text-end">
-                                <button type="submit" class="btn btn-primary prime-btn">Enregister</button>
+                                <button type="submit" class="btn btn-primary prime-btn">Enregistrer</button>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>
@@ -954,6 +1010,34 @@
 
     </div>
 
+    <script>
+        document.getElementById('add-another').addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Get the educations forms container
+            var container = document.getElementById('education-forms');
+
+            // Get the number of existing forms
+            var index = container.getElementsByClassName('setting-card').length;
+
+            // Clone the last setting-card
+            var original = container.querySelector('.setting-card');
+            var clone = original.cloneNode(true);
+
+            // Update the names in the cloned form
+            clone.querySelectorAll('input, textarea').forEach(function(input) {
+                var name = input.getAttribute('name');
+                var newName = name.replace(/\d+/, index);
+                input.setAttribute('name', newName);
+                input.value = '';
+            });
+
+            // Insert the clone before the submit button
+            container.appendChild(clone);
+        });
+
+    </script>
+
     <script src="{{ asset('public/assets/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('public/assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('public/assets/plugins/theia-sticky-sidebar/ResizeSensor.js') }}"></script>
@@ -965,25 +1049,7 @@
     <script src="{{ asset('public/assets/js/script.js') }}"></script>
     <script src="../../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="a3af23efa9a8f95e5c98a8cc-|49" defer></script>
     <script>
-        function previewImage(event) {
-            var icon = document.getElementById('icon');
-            var preview = document.getElementById('preview');
-            var file = event.target.files[0];
-            var reader = new FileReader();
 
-            reader.onload = function() {
-                preview.src = reader.result;
-                preview.style.display = 'block';
-                icon.style.display = 'none';
-            };
-
-            if (file) {
-                reader.readAsDataURL(file);
-            } else {
-                preview.style.display = 'none';
-                icon.style.display = 'block';
-            }
-        }
 
     </script>
 

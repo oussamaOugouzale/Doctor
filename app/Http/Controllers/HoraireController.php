@@ -31,8 +31,6 @@ class HoraireController extends Controller
         } catch (Exception $e) {
             return redirect()->back()->with('error', 'Une erreur est survenue lors de la modification des horaires.');
         }
-
         return redirect()->route('profile-settings-hours')->with('success', 'Horaires modifiés avec succès.');
-
     }
 }

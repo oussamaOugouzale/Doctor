@@ -66,8 +66,6 @@ class LoginController extends Controller
 
     public function logout(){
         Auth::guard('doctor')->logout();
-        
-
         return redirect()->back();
     }
 }

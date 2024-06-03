@@ -18,7 +18,11 @@ return new class extends Migration
             $table->string('numero_tel');
             $table->string('email');
             $table->string('password');
-            $table->string('photo');
+            $table->string('photo')->nullable();
+            $table->string('document')->nullable();
+            $table->string('genre')->nullable();
+            $table->string('languages')->nullable();
+            $table->boolean('partCompleted')->nullable();
             $table->timestamps();
         });
     }

@@ -20,19 +20,9 @@
         <div class="navbar">
             <img src="{{ asset('images/doccure.png') }}" alt="">
             <ul class="ul">
-                <li class="current"><a href="">Medecin</a></li>
-                <li><a href="">Vétérinaires</a><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg></li>
-                <li><a href="">Pharmacies</a><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg></li>
-                <li><a href="">Laboratoires</a><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg></li>
-                <li><a href="">Médicaments</a><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg></li>
+                <li class=""><a href="{{route('home')}}">home</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Qui somme nous ?</a></li>
             </ul>
 
         </div>
@@ -148,7 +138,7 @@
                         </div>
                         <button type="submit" class="text-white w-full bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Soumettre</button>
                         <div class="flex mt-3 w-full">
-                            <a href="{{route('login')}}" class="text-sm text-blue-600  underline hover:no-underline ">Vous avez déjà un compte ?</a>
+                            <a href="{{route('loginForm')}}" class="text-sm text-blue-600  underline hover:no-underline ">Vous avez déjà un compte ?</a>
                         </div>
                     </div>
                 </form>

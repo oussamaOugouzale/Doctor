@@ -56,8 +56,29 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile-settings-experiences', function () {
         return view('doctor.dashboard.profile-settings-experiences');
     })->name('profile-settings-experiences');
+    Route::get('/profile-settings-coordonnes', function () {
+        return view('doctor.dashboard.profile-settings-coordonnes');
+    })->name('profile-settings-coordonnes');
+    Route::get('/profile-settings-formations', function () {
+        return view('doctor.dashboard.profile-settings-formations');
+    })->name('profile-settings-formations');
 
     //logout
     Route::get('/doctor-logout', [App\Http\Controllers\LoginController::class, 'logout'])
         ->name('doctorLogout');
+    //doctor informations
+    Route::post('/doctorInformations', [App\Http\Controllers\DoctorController::class, 'Information'])
+        ->name('doctorInformations');
+    //doctor Coordonnes
+    Route::post('/doctorCoordonnes', [App\Http\Controllers\DoctorController::class, 'coordonne'])
+        ->name('doctorCoordonnes');
+    //doctor formations
+    Route::post('/doctorFormations', [App\Http\Controllers\DoctorController::class, 'store'])
+        ->name('doctorFormation');
 });
+
+//doctor search
+
+Route::post('/médecin', [App\Http\Controllers\DoctorSearchController::class, 'search'])
+    ->name('doctorSearch');
+

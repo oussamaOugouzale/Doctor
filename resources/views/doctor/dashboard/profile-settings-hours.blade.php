@@ -43,7 +43,7 @@
 
     <div class="main-wrapper">
 
-        <header class="header header-custom header-fixed header-one">
+        <header class="header header-trans header-three header-eight">
             <div class="container">
                 <nav class="navbar navbar-expand-lg header-nav">
                     <div class="navbar-header">
@@ -68,477 +68,11 @@
                             </a>
                         </div>
                         <ul class="main-nav">
-                            <li class="has-submenu megamenu ">
-                                <a href="javascript:void(0);">Home <i class="fas fa-chevron-down"></i></a>
-                                <ul class="submenu mega-submenu">
-                                    <li>
-                                        <div class="megamenu-wrapper">
-                                            <div class="row">
-                                                <div class="col-lg-2">
-                                                    <div class="single-demo ">
-                                                        <div class="demo-img">
-                                                            <a href="index-2.html" class="inner-demo-img"><img src="assets/img/home/home-01.jpg" class="img-fluid " alt="img"></a>
-                                                        </div>
-                                                        <div class="demo-info">
-                                                            <a href="index-2.html" class="inner-demo-img">General
-                                                                Home 1</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="single-demo ">
-                                                        <div class="demo-img">
-                                                            <a href="index-3.html" class="inner-demo-img"><img src="assets/img/home/home-02.jpg" class="img-fluid " alt="img"></a>
-                                                        </div>
-                                                        <div class="demo-info">
-                                                            <a href="index-3.html" class="inner-demo-img">General
-                                                                Home 2</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="single-demo ">
-                                                        <div class="demo-img">
-                                                            <a href="index-4.html" class="inner-demo-img"><img src="assets/img/home/home-03.jpg" class="img-fluid " alt="img"></a>
-                                                        </div>
-                                                        <div class="demo-info">
-                                                            <a href="index-4.html" class="inner-demo-img">General
-                                                                Home 3</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="single-demo ">
-                                                        <div class="demo-img">
-                                                            <a href="index-5.html" class="inner-demo-img"><img src="assets/img/home/home-04.jpg" class="img-fluid " alt="img"></a>
-                                                        </div>
-                                                        <div class="demo-info">
-                                                            <a href="index-5.html" class="inner-demo-img">Cardiology</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="single-demo ">
-                                                        <div class="demo-img">
-                                                            <a href="index-6.html" class="inner-demo-img"><img src="assets/img/home/home-05.jpg" class="img-fluid " alt="img"></a>
-                                                        </div>
-                                                        <div class="demo-info">
-                                                            <a href="index-6.html" class="inner-demo-img">Eyecare</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="single-demo ">
-                                                        <div class="demo-img">
-                                                            <a href="index-7.html" class="inner-demo-img"><img src="assets/img/home/home-06.jpg" class="img-fluid " alt="img"></a>
-                                                        </div>
-                                                        <div class="demo-info">
-                                                            <a href="index-7.html" class="inner-demo-img">Veterinary</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="single-demo ">
-                                                        <div class="demo-img">
-                                                            <a href="index-8.html" class="inner-demo-img"><img src="assets/img/home/home-07.jpg" class="img-fluid " alt="img"></a>
-                                                        </div>
-                                                        <div class="demo-info">
-                                                            <a href="index-8.html" class="inner-demo-img">Pediatric</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="single-demo ">
-                                                        <div class="demo-img">
-                                                            <a href="index-9.html" class="inner-demo-img"><img src="assets/img/home/home-08.jpg" class="img-fluid " alt="img"></a>
-                                                        </div>
-                                                        <div class="demo-info">
-                                                            <a href="index-9.html" class="inner-demo-img">Fertility</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="single-demo ">
-                                                        <div class="demo-img">
-                                                            <a href="index-10.html" class="inner-demo-img"><img src="assets/img/home/home-09.jpg" class="img-fluid " alt="img"></a>
-                                                        </div>
-                                                        <div class="demo-info">
-                                                            <a href="index-10.html" class="inner-demo-img">ENT</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="single-demo ">
-                                                        <div class="demo-img">
-                                                            <a href="index-11.html" class="inner-demo-img"><img src="assets/img/home/home-10.jpg" class="img-fluid " alt="img"></a>
-                                                        </div>
-                                                        <div class="demo-info">
-                                                            <a href="index-11.html" class="inner-demo-img">Cosmetics</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="single-demo ">
-                                                        <div class="demo-img">
-                                                            <a href="index-12.html" class="inner-demo-img"><img src="assets/img/home/home-11.jpg" class="img-fluid " alt="img"></a>
-                                                        </div>
-                                                        <div class="demo-info">
-                                                            <a href="index-12.html" class="inner-demo-img">Lab
-                                                                Test</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="single-demo">
-                                                        <div class="demo-img">
-                                                            <a href="pharmacy-index.html" class="inner-demo-img"><img src="assets/img/home/home-12.jpg" class="img-fluid" alt="img"></a>
-                                                        </div>
-                                                        <div class="demo-info">
-                                                            <a href="index-12.html" class="inner-demo-img">Pharmacy</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="single-demo ">
-                                                        <div class="demo-img">
-                                                            <a href="index-13.html" class="inner-demo-img"><img src="assets/img/home/home-13.jpg" class="img-fluid " alt="img"></a>
-                                                        </div>
-                                                        <div class="demo-info">
-                                                            <a href="index-13.html" class="inner-demo-img">Home
-                                                                Care</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-2">
-                                                    <div class="single-demo ">
-                                                        <div class="demo-img">
-                                                            <a href="index-14.html" class="inner-demo-img"><img src="assets/img/home/home-14.jpg" class="img-fluid " alt="img"></a>
-                                                        </div>
-                                                        <div class="demo-info">
-                                                            <a href="index-14.html" class="inner-demo-img">Dentists</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-submenu active">
-                                <a href="javascript:void(0);">Doctors <i class="fas fa-chevron-down"></i></a>
-                                <ul class="submenu">
-                                    <li class>
-                                        <a href="doctor-dashboard.html">Doctor Dashboard</a>
-                                    </li>
-                                    <li class>
-                                        <a href="appointments.html">Appointments</a>
-                                    </li>
-                                    <li class><a href="available-timings.html">Available Timing</a></li>
-                                    <li class><a href="my-patients.html">Patients List</a></li>
-                                    <li class><a href="patient-profile.html">Patients Profile</a></li>
-                                    <li class><a href="chat-doctor.html">Chat</a></li>
-                                    <li class><a href="invoices.html">Invoices</a></li>
-                                    <li class="active">
-                                        <a href="doctor-profile-settings.html">Profile Settings</a>
-                                    </li>
-                                    <li class><a href="reviews.html">Reviews</a></li>
-                                    <li class><a href="doctor-register.html">Doctor Register</a></li>
-                                    <li class="has-submenu ">
-                                        <a href="doctor-blog.html">Blog</a>
-                                        <ul class="submenu">
-                                            <li class>
-                                                <a href="doctor-blog.html">Blog</a>
-                                            </li>
-                                            <li class><a href="blog-details.html">Blog view</a></li>
-                                            <li class><a href="doctor-add-blog.html">Add Blog</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="has-submenu ">
-                                <a href="javascript:void(0);">Patients <i class="fas fa-chevron-down"></i></a>
-                                <ul class="submenu">
-                                    <li class><a href="patient-dashboard.html">Patient Dashboard</a></li>
-                                    <li class="has-submenu ">
-                                        <a href="javascript:void(0);">Doctors</a>
-                                        <ul class="submenu inner-submenu">
-                                            <li class><a href="map-grid.html">Map Grid</a></li>
-                                            <li class><a href="map-list.html">Map List</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-submenu ">
-                                        <a href="javascript:void(0);">Search Doctor</a>
-                                        <ul class="submenu inner-submenu">
-                                            <li class><a href="search.html">Search Doctor 1</a></li>
-                                            <li class><a href="search-2.html">Search Doctor 2</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-submenu ">
-                                        <a href="javascript:void(0);">Doctor Profile</a>
-                                        <ul class="submenu inner-submenu">
-                                            <li class><a href="doctor-profile.html">Doctor Profile 1</a></li>
-                                            <li class><a href="doctor-profile-2.html">Doctor Profile 2</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-submenu ">
-                                        <a href="javascript:void(0);">Booking</a>
-                                        <ul class="submenu inner-submenu">
-                                            <li class><a href="booking.html">Booking 1</a></li>
-                                            <li class><a href="booking-2.html">Booking 2</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class><a href="checkout.html">Checkout</a></li>
-                                    <li class><a href="booking-success.html">Booking Success</a></li>
-                                    <li class><a href="favourites.html">Favourites</a></li>
-                                    <li class><a href="chat.html">Chat</a></li>
-                                    <li class><a href="profile-settings.html">Profile Settings</a></li>
-                                    <li class><a href="change-password.html">Change Password</a></li>
-                                </ul>
-                            </li>
-                            <li class="has-submenu ">
-                                <a href="javascript:void(0);">Pharmacy <i class="fas fa-chevron-down"></i></a>
-                                <ul class="submenu">
-                                    <li class><a href="pharmacy-index.html">Pharmacy</a></li>
-                                    <li class><a href="pharmacy-details.html">Pharmacy Details</a></li>
-                                    <li class><a href="pharmacy-search.html">Pharmacy Search</a></li>
-                                    <li class><a href="product-all.html">Product</a></li>
-                                    <li class><a href="product-description.html">Product Description</a></li>
-                                    <li class><a href="cart.html">Cart</a></li>
-                                    <li class><a href="product-checkout.html">Product Checkout</a></li>
-                                    <li class><a href="payment-success.html">Payment Success</a></li>
-                                    <li class><a href="pharmacy-register.html">Pharmacy Register</a></li>
-                                </ul>
-                            </li>
-                            <li class="has-submenu ">
-                                <a href="javascript:void(0);">Pages <i class="fas fa-chevron-down"></i></a>
-                                <ul class="submenu">
-                                    <li class><a href="about-us.html">About Us</a></li>
-                                    <li class><a href="contact-us.html">Contact Us</a></li>
-                                    <li class="has-submenu " ">
-<a href=" javascript:void(0);">Call</a>
-                                        <ul class="submenu inner-submenu">
-                                            <li class><a href="voice-call.html">Voice Call</a></li>
-                                            <li class><a href="video-call.html">Video Call</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-submenu ">
-                                        <a href="javascript:void(0);">Invoices</a>
-                                        <ul class="submenu inner-submenu">
-                                            <li class><a href="invoices.html">Invoices</a></li>
-                                            <li class><a href="invoice-view.html">Invoice View</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-submenu ">
-                                        <a href="javascript:void(0);">Authentication</a>
-                                        <ul class="submenu inner-submenu">
-                                            <li class><a href="login-email.html">Login Email</a></li>
-                                            <li class><a href="login-phone.html">Login Phone</a></li>
-                                            <li class><a href="doctor-signup.html">Doctor Signup</a></li>
-                                            <li class><a href="patient-signup.html">Patient Signup</a></li>
-                                            <li class><a href="forgot-password.html">Forgot Password 1</a></li>
-                                            <li class><a href="forgot-password2.html">Forgot Password 2</a></li>
-                                            <li class><a href="login-email-otp.html">Email OTP</a></li>
-                                            <li class><a href="login-phone-otp.html">Phone OTP</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-submenu ">
-                                        <a href="javascript:void(0);">Error Pages</a>
-                                        <ul class="submenu inner-submenu">
-                                            <li class><a href="error-404.html">404 Error</a></li>
-                                            <li class><a href="error-500.html">500 Error</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class><a href="blank-page.html">Starter Page</a></li>
-                                    <li class><a href="pricing.html">Pricing Plan</a></li>
-                                    <li class><a href="faq.html">FAQ</a></li>
-                                    <li class><a href="maintenance.html">Maintenance</a></li>
-                                    <li class><a href="coming-soon.html">Coming Soon</a></li>
-                                    <li class><a href="terms-condition.html">Terms & Condition</a></li>
-                                    <li class><a href="privacy-policy.html">Privacy Policy</a></li>
-                                    <li class><a href="components.html">Components</a></li>
-                                </ul>
-                            </li>
-                            <li class="has-submenu ">
-                                <a href="#">Blog <i class="fas fa-chevron-down"></i></a>
-                                <ul class="submenu">
-                                    <li class><a href="blog-list.html">Blog List</a></li>
-                                    <li class><a href="blog-grid.html">Blog Grid</a></li>
-                                    <li class><a href="blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li class="has-submenu ">
-                                <a href="#">Admin <i class="fas fa-chevron-down"></i></a>
-                                <ul class="submenu">
-                                    <li class><a href="admin/index_admin.html" target="_blank">Admin</a></li>
-                                    <li class><a href="pharmacy-admin/index_pharmacy_admin.html" target="_blank">Pharmacy
-                                            Admin</a></li>
-                                </ul>
-                            </li>
+
                         </ul>
                     </div>
                     <ul class="nav header-navbar-rht">
-
-                        <li class="nav-item dropdown noti-nav view-cart-header me-3">
-                            <a href="#" class="dropdown-toggle nav-link p-0 position-relative" data-bs-toggle="dropdown">
-                                <i class="fa-solid fa-cart-shopping"></i> <small class="unread-msg1">7</small>
-                            </a>
-                            <div class="dropdown-menu notifications dropdown-menu-end">
-                                <div class="shopping-cart">
-                                    <ul class="shopping-cart-items list-unstyled">
-                                        <li class="clearfix">
-                                            <div class="close-icon"><i class="fa-solid fa-circle-xmark"></i></div>
-                                            <a href="product-description.html"><img class="avatar-img rounded" src="assets/img/products/product.jpg" alt="User Image"></a>
-                                            <a href="product-description.html" class="item-name">Benzaxapine
-                                                Croplex</a>
-                                            <span class="item-price">$849.99</span>
-                                            <span class="item-quantity">Quantity: 01</span>
-                                        </li>
-                                        <li class="clearfix">
-                                            <div class="close-icon"><i class="fa-solid fa-circle-xmark"></i></div>
-                                            <a href="product-description.html"><img class="avatar-img rounded" src="assets/img/products/product1.jpg" alt="User Image"></a>
-                                            <a href="product-description.html" class="item-name">Ombinazol
-                                                Bonibamol</a>
-                                            <span class="item-price">$1,249.99</span>
-                                            <span class="item-quantity">Quantity: 01</span>
-                                        </li>
-                                        <li class="clearfix">
-                                            <div class="close-icon"><i class="fa-solid fa-circle-xmark"></i></div>
-                                            <a href="product-description.html"><img class="avatar-img rounded" src="assets/img/products/product2.jpg" alt="User Image"></a>
-                                            <a href="product-description.html" class="item-name">Dantotate
-                                                Dantodazole</a>
-                                            <span class="item-price">$129.99</span>
-                                            <span class="item-quantity">Quantity: 01</span>
-                                        </li>
-                                    </ul>
-                                    <div class="booking-summary pt-3">
-                                        <div class="booking-item-wrap">
-                                            <ul class="booking-date">
-                                                <li>Subtotal <span>$5,877.00</span></li>
-                                                <li>Shipping <span>$25.00</span></li>
-                                                <li>Tax <span>$0.00</span></li>
-                                                <li>Total <span>$5.2555</span></li>
-                                            </ul>
-                                            <div class="booking-total">
-                                                <ul class="booking-total-list text-align">
-                                                    <li>
-                                                        <div class="clinic-booking pt-3">
-                                                            <a class="apt-btn" href="cart.html">View
-                                                                Cart</a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="clinic-booking pt-3">
-                                                            <a class="apt-btn" href="product-checkout.html">Checkout</a>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-
-
-                        <li class="nav-item dropdown noti-nav me-3 pe-0">
-                            <a href="#" class="dropdown-toggle nav-link p-0" data-bs-toggle="dropdown">
-                                <i class="fa-solid fa-bell"></i> <span class="badge">5</span>
-                            </a>
-                            <div class="dropdown-menu notifications dropdown-menu-end ">
-                                <div class="topnav-dropdown-header">
-                                    <span class="notification-title">Notifications</span>
-                                </div>
-                                <div class="noti-content">
-                                    <ul class="notification-list">
-                                        <li class="notification-message">
-                                            <a href="#">
-                                                <div class="notify-block d-flex">
-                                                    <span class="avatar">
-                                                        <img class="avatar-img" alt="Ruby perin" src="assets/img/clients/client-01.jpg">
-                                                    </span>
-                                                    <div class="media-body">
-                                                        <h6>Travis Tremble <span class="notification-time">18.30
-                                                                PM</span></h6>
-                                                        <p class="noti-details">Sent a amount of $210 for his
-                                                            Appointment <span class="noti-title">Dr.Ruby perin </span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="notification-message">
-                                            <a href="#">
-                                                <div class="notify-block d-flex">
-                                                    <span class="avatar">
-                                                        <img class="avatar-img" alt="Hendry Watt" src="assets/img/clients/client-02.jpg">
-                                                    </span>
-                                                    <div class="media-body">
-                                                        <h6>Travis Tremble <span class="notification-time">12 Min
-                                                                Ago</span></h6>
-                                                        <p class="noti-details"> has booked her appointment to <span class="noti-title">Dr. Hendry Watt</span></p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="notification-message">
-                                            <a href="#">
-                                                <div class="notify-block d-flex">
-                                                    <div class="avatar">
-                                                        <img class="avatar-img" alt="Maria Dyen" src="assets/img/clients/client-03.jpg">
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <h6>Travis Tremble <span class="notification-time">6 Min
-                                                                Ago</span></h6>
-                                                        <p class="noti-details"> Sent a amount $210 for his
-                                                            Appointment <span class="noti-title">Dr.Maria Dyen</span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="notification-message">
-                                            <a href="#">
-                                                <div class="notify-block d-flex">
-                                                    <div class="avatar avatar-sm">
-                                                        <img class="avatar-img" alt="client-image" src="assets/img/clients/client-04.jpg">
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <h6>Travis Tremble <span class="notification-time">8.30
-                                                                AM</span></h6>
-                                                        <p class="noti-details"> Send a message to his doctor</p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown has-arrow logged-item">
-                            <a href="javascript:;" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-                                <span class="user-img">
-                                    <img class="rounded-circle" src="assets/img/doctors/doctor-thumb-02.jpg" width="31" alt="Darren Elder">
-                                </span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end">
-                                <div class="user-header">
-                                    <div class="avatar avatar-sm">
-                                        <img src="assets/img/doctors/doctor-thumb-02.jpg" alt="User Image" class="avatar-img rounded-circle">
-                                    </div>
-                                    <div class="user-text">
-                                        <h6>{{ Auth::guard('doctor')->user()->nom .' '. Auth::guard('doctor')->user()->prenom}}</h6>
-                                        <p class="text-muted mb-0">Doctor</p>
-                                    </div>
-                                </div>
-                                <a class="dropdown-item" href="doctor-dashboard.html">Dashboard</a>
-                                <a class="dropdown-item" href="doctor-profile-settings.html">Profile
-                                    Settings</a>
-                                <form id="logout-form" action="{{route('doctorLogout')}}" style="display: none">
-                                    @csrf
-                                </form>
-                                <a class="dropdown-item" href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Logout</a>
-                            </div>
-                        </li>
+                        <a href="{{route('doctorLogout')}}">Se déconnecter</a>
                     </ul>
                 </nav>
             </div>
@@ -575,21 +109,13 @@
                                     <div class="profile-det-info">
                                         <h3><a href="doctor-profile.html">Dr Edalin Hendry</a></h3>
                                         <div class="patient-details">
-                                            <h5 class="mb-0">BDS, MDS - Oral & Maxillofacial Surgery</h5>
+                                            <h5 class="mb-0">ttttttttttttttest, simthinnnng</h5>
                                         </div>
                                         <span class="badge doctor-role-badge"><i class="fa-solid fa-circle"></i>Dentist</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="doctor-available-head">
-                                <div class="input-block input-block-new">
-                                    <label class="form-label">Availability <span class="text-danger">*</span></label>
-                                    <select class="select form-control">
-                                        <option>I am Available Now</option>
-                                        <option>Not Available</option>
-                                    </select>
-                                </div>
-                            </div>
+
                             <div class="dashboard-widget">
                                 <nav class="dashboard-menu">
                                     <ul>
@@ -613,52 +139,9 @@
                                             </a>
                                         </li>
                                         <li class>
-                                            <a href="available-timings.html">
-                                                <i class="fa-solid fa-calendar-day"></i>
-                                                <span>Available Timings</span>
-                                            </a>
-                                        </li>
-                                        <li class>
                                             <a href="my-patients.html">
                                                 <i class="fa-solid fa-user-injured"></i>
                                                 <span>My Patients</span>
-                                            </a>
-                                        </li>
-                                        <li class>
-                                            <a href="doctor-specialities.html">
-                                                <i class="fa-solid fa-clock"></i>
-                                                <span>Specialties & Services</span>
-                                            </a>
-                                        </li>
-                                        <li class>
-                                            <a href="reviews.html">
-                                                <i class="fas fa-star"></i>
-                                                <span>Reviews</span>
-                                            </a>
-                                        </li>
-                                        <li class>
-                                            <a href="accounts.html">
-                                                <i class="fa-solid fa-file-contract"></i>
-                                                <span>Accounts</span>
-                                            </a>
-                                        </li>
-                                        <li class>
-                                            <a href="invoices.html">
-                                                <i class="fa-solid fa-file-lines"></i>
-                                                <span>Invoices</span>
-                                            </a>
-                                        </li>
-                                        <li class>
-                                            <a href="doctor-payment.html">
-                                                <i class="fa-solid fa-money-bill-1"></i>
-                                                <span>Payout Settings</span>
-                                            </a>
-                                        </li>
-                                        <li class>
-                                            <a href="chat-doctor.html">
-                                                <i class="fa-solid fa-comments"></i>
-                                                <span>Message</span>
-                                                <small class="unread-msg">7</small>
                                             </a>
                                         </li>
                                         <li class="active">
@@ -668,15 +151,9 @@
                                             </a>
                                         </li>
                                         <li class>
-                                            <a href="social-media.html">
-                                                <i class="fa-solid fa-shield-halved"></i>
-                                                <span>Social Media</span>
-                                            </a>
-                                        </li>
-                                        <li class>
                                             <a href="doctor-change-password.html">
                                                 <i class="fa-solid fa-key"></i>
-                                                <span>Change Password</span>
+                                                <span> Password</span>
                                             </a>
                                         </li>
                                         <li class>
@@ -703,10 +180,10 @@
                             <div class="appointment-tabs">
                                 <ul class="nav">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{route('profile-settings-details')}}">Basic Details</a>
+                                        <a class="nav-link" href="{{route('profile-settings-details')}}">Informations personelles</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{route('profile-settings-experiences')}}">Experience</a>
+                                        <a class="nav-link" href="{{route('profile-settings-coordonnes')}}">Coordonnés</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="doctor-education-settings.html">Education</a>
@@ -777,13 +254,15 @@
                                 'jeudi' => 'thursday',
                                 'vendredi' => 'friday',
                                 'samedi' => 'saturday',
-                                'dimanche' => 'Sunday'
                                 ];
                                 @endphp
                                 @foreach($horaires as $horaire)
-                                <div class="user-accordion-item tab-items active" id="day-{{$horaire->jour}}">
-                                    <a href="#" class="accordion-wrap" data-bs-toggle="collapse" data-bs-target="#{{$horaire->jour}}">{{$horaire->jour}}<span class="edit">Modifier</span></a>
-                                    <div class="accordion-collapse collapse show" id="{{$horaire->jour}}" data-bs-parent="#list-accord">
+                                @php
+                                $day_in_english = $days_translation[$horaire->jour];
+                                @endphp
+                                <div class="user-accordion-item tab-items active" id="day-{{$day_in_english}}">
+                                    <a href="#" class="accordion-wrap" data-bs-toggle="collapse" data-bs-target="#{{$day_in_english}}">{{$horaire->jour}}<span class="edit">Modifier</span></a>
+                                    <div class="accordion-collapse collapse show" id="{{$day_in_english}}" data-bs-parent="#list-accord">
                                         <div class="content-collapse pb-0">
                                             <div class="row align-items-center">
                                                 <h5 class="">Première séance:</h5>
@@ -830,9 +309,71 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                @endforeach
+                                @else
+                                @php
+                                $days_translation = [
+                                'lundi' => 'monday',
+                                'mardi' => 'tuesday',
+                                'mercredi' => 'wednesday',
+                                'jeudi' => 'thursday',
+                                'vendredi' => 'friday',
+                                'samedi' => 'saturday',
+                                ];
+                                @endphp
+                                @foreach($days_translation as $jour => $day_in_english)
+                                <div class="user-accordion-item tab-items active" id="day-{{$day_in_english}}">
+                                    <a href="#" class="accordion-wrap" data-bs-toggle="collapse" data-bs-target="#{{$day_in_english}}">{{$jour}}<span class="edit">Modifier</span></a>
+                                    <div class="accordion-collapse collapse show" id="{{$day_in_english}}" data-bs-parent="#list-accord">
+                                        <div class="content-collapse pb-0">
+                                            <div class="row align-items-center">
+                                                <h5 class="">Première séance:</h5>
+                                                <div class="col-md-6">
+                                                    <div class="form-wrap">
+                                                        <label class="col-form-label">De <span class="text-danger">*</span></label>
+                                                        <div class="form-icon">
+                                                            <input type="text" name="horaires[{{$jour}}][debut_premiere]" class="form-control timepicker1">
+                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-wrap">
+                                                        <label class="col-form-label">à <span class="text-danger">*</span></label>
+                                                        <div class="form-icon">
+                                                            <input type="text" name="horaires[{{$jour}}][fin_premiere]" class="form-control timepicker1">
+                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row align-items-center">
+                                                <h5 class="">Deuxième séance:</h5>
+                                                <div class="col-md-6">
+                                                    <div class="form-wrap">
+                                                        <label class="col-form-label">De <span class="text-danger">*</span></label>
+                                                        <div class="form-icon">
+                                                            <input type="text" name="horaires[{{$jour}}][debut_deuxieme]" class="form-control timepicker1">
+                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-wrap">
+                                                        <label class="col-form-label">à <span class="text-danger">*</span></label>
+                                                        <div class="form-icon">
+                                                            <input type="text" name="horaires[{{$jour}}][fin_deuxieme]" class="form-control timepicker1">
+                                                            <span class="icon"><i class="fa-solid fa-clock"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 @endforeach
                                 @endif
+
                             </div>
                             <div class="modal-btn text-end">
                                 <a href="#" class="btn btn-gray">Annuler</a>
