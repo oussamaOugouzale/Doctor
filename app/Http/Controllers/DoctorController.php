@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cabinet;
+use App\Models\Pratique;
 use Illuminate\Http\Request;
 use Exception;
 use PhpParser\Node\Stmt\Catch_;
@@ -9,6 +11,7 @@ use PhpParser\Node\Stmt\TryCatch;
 use App\Models\Coordonne;
 use App\Models\Specialite;
 use App\Models\Formation;
+use Auth;
 
 class DoctorController extends Controller
 {
@@ -56,43 +59,92 @@ class DoctorController extends Controller
     }
     public function coordonne(Request $request)
     {
-        
-            $doctor = auth()->guard('doctor')->user();
-            $coordonne = new Coordonne();
-            $coordonne->adresse = $request->adresse;
-            $coordonne->ville = $request->ville;
-            $coordonne->delegation = $request->delegation;
-            $coordonne->tele_fixe = $request->tele_fixe;
-            $coordonne->tele_mobile = $request->tele_mobile;
-            $coordonne->latitude = $request->latitude;
-            $coordonne->longitude = $request->longitude;
-            $coordonne->doctor_id = $doctor->id;
-            $coordonne->partCompleted = true;
-            $coordonne->save();
-        
+
+        $doctor = auth()->guard('doctor')->user();
+        $coordonne = new Coordonne();
+        $coordonne->adresse = $request->adresse;
+        $coordonne->ville = $request->ville;
+        $coordonne->delegation = $request->delegation;
+        $coordonne->tele_fixe = $request->tele_fixe;
+        $coordonne->tele_mobile = $request->tele_mobile;
+        $coordonne->latitude = $request->latitude;
+        $coordonne->longitude = $request->longitude;
+        $coordonne->doctor_id = $doctor->id;
+        $coordonne->partCompleted = true;
+        $coordonne->save();
+
         return redirect()->back()->with('success', 'Coordonnées modifiés avec succès !');
     }
     public function store(Request $request)
     {
         $formations = $request->input('educations');
         $doctor = auth()->guard('doctor')->user();
-        Specialite::create([
-            'specialite' => $request->specialite,
+        Specialite::updateOrCreate(
+            ['specialite' => $request->specialite, 'doctor_id' => $doctor->getAuthIdentifier()],
+            [
+                'specialite' => $request->specialite,
                 'autre_specialite' => $request->autre_specialite,
                 'doctor_id' => $doctor->id,
-        ]);
+            ]
+        );
         foreach ($formations as $formation) {
-            Formation::create([
-                'institution_name' => $formation['institution_name'],
-                'formation' => $formation['formation'],
-                'start_date' => $formation['start_date'],
-                'end_date' => $formation['end_date'],
-                'years' => $formation['years'],
-                'description' => $formation['description'],
-                'doctor_id' => $doctor->id,
-            ]);
+            Formation::updateOrCreate(
+                [
+                    'institution_name' => $formation['institution_name'],
+                    'formation' => $formation['formation'],
+                    'start_date' => $formation['start_date'],
+                    'end_date' => $formation['end_date'],
+                    'years' => $formation['years'],
+                    'description' => $formation['description'],
+                    'doctor_id' => $doctor->id
+                ],
+                [
+                    'institution_name' => $formation['institution_name'],
+                    'formation' => $formation['formation'],
+                    'start_date' => $formation['start_date'],
+                    'end_date' => $formation['end_date'],
+                    'years' => $formation['years'],
+                    'description' => $formation['description'],
+                    'doctor_id' => $doctor->id,
+                ]
+            );
         }
 
         return redirect()->back()->with('success', 'Formations enregistrées avec succès');
-}
+    }
+
+    public function uploadPhotos(Request $request)
+    {
+
+
+        $doctorId = Auth::guard('doctor')->user()->id;
+
+        Pratique::updateOrCreate(
+            [
+                'doctor_id' => $doctorId,
+            ],
+            [
+                'reglement' => $request->reglement,
+                'duree' => $request->duree,
+                'doctor_id' => $doctorId,
+            ]
+        );
+
+
+        Cabinet::where('doctor_id', $doctorId)->delete();
+
+
+        if ($request->hasFile('photos')) {
+            foreach ($request->file('photos') as $photo) {
+                $path = $photo->store('public/photos');
+
+                Cabinet::create([
+                    'doctor_id' => $doctorId,
+                    'photo' => $path
+                ]);
+            }
+        }
+
+        return redirect()->back()->with('success', 'Information enregitrés avec succès');
+    }
 }

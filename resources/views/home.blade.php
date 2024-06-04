@@ -103,28 +103,113 @@
                                 <p>Sélectionnez votre médecin, choisissez la date et l'heure de votre rdv et recevez votre sms/mail de confirmation. C’est aussi simple que ça !.</p>
                             </div>
                             <div class="doctor-form">
+                                @if(session('error'))
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ session('error') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                @endif
+                                @if(session('notfound'))
+                                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                    {{ session('notfound') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                @endif
                                 <form action="{{route('doctorSearch')}}" id="searchForm" method="POST" class="doctor-search">
                                     @csrf
                                     <div class="input-box-twelve">
                                         <div class="search-input input-block">
-                                            <input type="text" name="location" class="form-control" placeholder="Localisation">
+                                            <input type="text" name="localisation" class="form-control" placeholder="Localisation">
                                             <a class="current-loc-icon current_location" href="javascript:void(0);">
                                                 <i class="fa-solid fa-location-crosshairs"></i>
                                             </a>
                                         </div>
                                         <div class="search-input input-block">
-                                            <select class="select form-control" name="departement">
-                                                <option value="">Select Department</option>
-                                                <option value="Cardiology">Cardiology</option>
-                                                <option value="Neurology">Neurology</option>
-                                                <option value="Urology">Urology</option>
-                                            </select>
-                                            <a class="current-loc-icon current_location" href="javascript:void(0);">
-                                                <i class="fa-solid fa-user-check"></i>
-                                            </a>
-                                        </div>
+                                            <select class="select form-control" name="specialite">
+                                                <option value="" selected="">Sélectionnez votre spécialité</option>
+                                                <option value="13">Cardiologue</option>
+                                                <option value="24">Chirurgien Esthétique</option>
+                                                <option value="20">Chirurgien Orthopédiste Traumatologue</option>
+                                                <option value="29">Dentiste</option>
+                                                <option value="30">Dermatologue</option>
+                                                <option value="33">Endocrinologue Diabétologue</option>
+                                                <option value="35">Gastro-entérologue</option>
+                                                <option value="36">Généraliste</option>
+                                                <option value="39">Gynécologue Obstétricien</option>
+                                                <option value="49">Interniste</option>
+                                                <option value="154">Laboratoire d'analyses de biologie médicale</option>
+                                                <option value="62">Néphrologue</option>
+                                                <option value="64">Neurologue</option>
+                                                <option value="65">Nutritionniste</option>
+                                                <option value="66">Ophtalmologiste</option>
+                                                <option value="70">Oto-Rhino-Laryngologiste (ORL)</option>
+                                                <option value="72">Pédiatre</option>
+                                                <option value="78">Pneumologue</option>
+                                                <option value="93">Psychiatre</option>
+                                                <option value="94">Psychothérapeute</option>
+                                                <option value="80">Radiologue</option>
+                                                <option value="87">Rhumatologue</option>
+                                                <option value="95">Sexologue</option>
+                                                <option value="92">Urologue</option>
+                                                <optgroup label="Autres spécialités">
+                                                    <option value="111">Acupuncture</option>
+                                                    <option value="120">Addictologue</option>
+                                                    <option value="121">Algologue</option>
+                                                    <option value="89">Allergologue</option>
+                                                    <option value="1">Anatomo-Cyto-Pathologiste</option>
+                                                    <option value="122">Andrologue</option>
+                                                    <option value="2">Anesthésiste-Réanimateur</option>
+                                                    <option value="3">Angiologue</option>
+                                                    <option value="160">Audiologiste</option>
+                                                    <option value="106">Audioprothésiste</option>
+                                                    <option value="172">Auriculothérapeute</option>
+                                                    <option value="6">Biochimiste</option>
+                                                    <option value="4">Biochimiste Clinique</option>
+                                                    <option value="5">Biologiste Medicale</option>
+                                                    <option value="10">Biophysique</option>
+                                                    <option value="12">Cancérologue</option>
+                                                    <option value="179">Cardiologue pédiatrique</option>
+                                                    <option value="153">Centre d'imagerie médicale</option>
+                                                    <option value="161">Chiropracteur</option>
+                                                    <option value="182">Chirurgie Arthroscopique et du Sport</option>
+                                                    <option value="158">Chirurgie plastique et réparatrice</option>
+                                                    <option value="26">Chirurgien</option>
+                                                    <option value="178">Chirurgien Buccal</option>
+                                                    <option value="14">Chirurgien Cancérologue</option>
+                                                    <option value="143">Chirurgien capillaire</option>
+                                                    <option value="15">Chirurgien Cardio-Vasculaire</option>
+                                                    <option value="16">Chirurgien Cardio-Vasculaire Thoracique</option>
+                                                    <option value="177">Chirurgien cervico-facial</option>
+                                                    <option value="133">Chirurgien de l'obésité</option>
+                                                    <option value="17">Chirurgien Généraliste</option>
+                                                    <option value="151">Chirurgien Maxillo Facial et Esthétique</option>
+                                                    <option value="91">Chirurgien Maxillo Facial Stomatologue</option>
+                                                    <option value="174">Chirurgien Orthopédiste Pédiatrique</option>
+                                                    <option value="21">Chirurgien Pédiatrique</option>
+                                                    <option value="22">Chirurgien Plasticien</option>
+                                                    <option value="27">Chirurgien Thoracique</option>
+                                                    <option value="25">Chirurgien Urologue</option>
+                                                    <option value="144">Chirurgien vasculaire</option>
+                                                    <option value="132">Chirurgien viscéral et digestif</option>
+                                                    <option value="31">Diabétologue</option>
+                                                    <option value="101">Diététicien</option>
+                                                    <option value="43">Embryologiste</option>
+                                                    <option value="32">Endocrinologue</option>
+                                                    <option value="150">Endodontiste</option>
+                                                    <option value="137">Epidemiologiste</option>
+                                                    <option value="142">Ergothérapeute</option>
+                                                    <option value="117">Généticien</option>
+                                                    <option value="102">Gériatre</option>
+                                                    <option value="41">Hématologue</option>
+                                                    <option value="42">Hématologue Clinique</option>
+                                                    <option value="7">Hématopathologiste</option>
+                                                    <option value="110">Hépatologue</option>
+                                                    <option value="116">Hypnothérapeute</option>
+                                                    <option value="44">Imagerie
+                                                </optgroup>
+                                            </select> </div>
                                         <div class="search-input input-block">
-                                            <input type="text" class="form-control" name="name" placeholder=" Médecin">
+                                            <input type="text" class="form-control" name="nom" placeholder=" Médecin">
                                         </div>
                                         <div class="input-block">
                                             <div class="search-btn-info">

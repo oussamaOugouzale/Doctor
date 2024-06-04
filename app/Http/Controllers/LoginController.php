@@ -25,6 +25,14 @@ class LoginController extends Controller
         //     'photo'=> 'photo',
             
         // ]);
+        // Patient::create([
+        //     'nom'=> 'pat1',
+        //     'prenom'=> 'pattt1',
+        //     'numero_tel'=> '3333333',
+        //     'genre'=> 'homme',
+        //     'email'=> 'pat@gmail.com',
+        //     'password'=> Hash::make('Pat2004@2004'),            
+        // ]);
         $request->validate(
             [
                 'email' => 'required|email',

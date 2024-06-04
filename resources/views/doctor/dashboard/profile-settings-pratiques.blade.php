@@ -709,10 +709,10 @@
                                         <a class="nav-link " href="{{route('profile-settings-coordonnes')}}">Coordonnées</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link active" href="{{route('profile-settings-formations')}}">Spécialités</a>
+                                        <a class="nav-link " href="{{route('profile-settings-formations')}}">Spécialités</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{route('profile-settings-pratiques')}}">pratiques et photo</a>
+                                        <a class="nav-link active" href="{{route('profile-settings-pratiques')}}">Pratiques et photo</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="">Insurances</a>
@@ -728,12 +728,9 @@
                         </div>
 
 
-                        @php
-                        $specialites = Auth::guard('doctor')->user()->specialites;
-                        $formations = Auth::guard('doctor')->user()->formations;
-                        @endphp
+                        
 
-                        <form action="{{ route('doctorFormation') }}" method="POST">
+                        <form action="{{ route('doctorPratiques') }}" method="POST"  enctype="multipart/form-data">
                             @csrf
                             @if(session('success'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -750,132 +747,50 @@
 
                             <div id="education-forms">
                                 <div class="setting-title">
-                                    <h5>Spécialités</h5>
+                                    <h5>INFORMATIONS PRATIQUES
+                                    </h5>
                                 </div>
-                                <div class="setting-card">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-wrap">
-                                                <label class="col-form-label">Spécialité principale</label>
-                                                <input type="text" value="{{ $specialites ? $specialites->specialite : '' }}" class="form-control" name="specialite">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-wrap">
-                                                <label class="col-form-label">Autre spécialité</label>
-                                                <input type="text" value="{{ $specialites ? $specialites->autre_specialite : '' }}" class="form-control" name="autre_specialite">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="setting-title">
-                                    <h5>Formations et Diplômes</h5>
-                                </div>
-
-                                <div id="formation-section">
-                                    @if($formations->isEmpty())
-                                    <div class="setting-card formation-card">
+                                    <div class="setting-card">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-lg-6 col-md-8">
                                                 <div class="form-wrap">
-                                                    <label class="col-form-label">Nom de l'institution</label>
-                                                    <input type="text" class="form-control" name="educations[0][institution_name]">
+                                                    <label class="col-form-label">Mode de réglement <span class="text-danger">*</span></label>
+                                                    <select class="form-control" required name="reglement">
+                                                        <option value="" disabled selected>Mode de réglement</option>
+                                                        <option value="espèces" {{ Auth::guard('doctor')->user()->pratique->reglement === 'espèces' ? 'selected' : '' }}>espèces</option>
+                                                        <option value="cart bancaire" {{ Auth::guard('doctor')->user()->pratique->reglement === 'cart bancaire' ? 'selected' : '' }}>cart bancaire</option>
+                                                        <option value="chèques" {{ Auth::guard('doctor')->user()->pratique->reglement === 'chèques' ? 'selected' : '' }}>chèques</option>
+                                                    </select>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-lg-6 col-md-8">
                                                 <div class="form-wrap">
-                                                    <label class="col-form-label">Formation</label>
-                                                    <input type="text" class="form-control" name="educations[0][formation]">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6">
-                                                <div class="form-wrap">
-                                                    <label class="col-form-label">Date de début <span class="text-danger">*</span></label>
-                                                    <div class="form-icon">
-                                                        <input type="text" class="form-control datetimepicker" name="educations[0][start_date]">
-                                                        <span class="icon"><i class="fa-regular fa-calendar-days"></i></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6">
-                                                <div class="form-wrap">
-                                                    <label class="col-form-label">Date de fin <span class="text-danger">*</span></label>
-                                                    <div class="form-icon">
-                                                        <input type="text" class="form-control datetimepicker" name="educations[0][end_date]">
-                                                        <span class="icon"><i class="fa-regular fa-calendar-days"></i></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6">
-                                                <div class="form-wrap">
-                                                    <label class="col-form-label">Nombre d'années <span class="text-danger">*</span></label>
-                                                    <input type="text" class="form-control" name="educations[0][years]">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="form-wrap">
-                                                    <label class="col-form-label">Description <span class="text-danger">*</span></label>
-                                                    <textarea class="form-control" rows="3" name="educations[0][description]"></textarea>
+                                                    <label class="col-form-label">Durée moyenne de consultation (min)
+                                                        <span class="text-danger">*</span></label>
+                                                    <input type="text" required value="{{Auth::guard('doctor')->user()->pratique ? Auth::guard('doctor')->user()->pratique->duree : '' }}" name="duree" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    @else
-                                    @foreach($formations as $index => $formation)
-                                    <div class="setting-card formation-card">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-wrap">
-                                                    <label class="col-form-label">Nom de l'institution</label>
-                                                    <input type="text" value="{{ $formation->institution_name }}" class="form-control" name="educations[{{ $index }}][institution_name]">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-wrap">
-                                                    <label class="col-form-label">Formation</label>
-                                                    <input type="text" value="{{ $formation->formation }}" class="form-control" name="educations[{{ $index }}][formation]">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6">
-                                                <div class="form-wrap">
-                                                    <label class="col-form-label">Date de début <span class="text-danger">*</span></label>
-                                                    <div class="form-icon">
-                                                        <input type="text" value="{{ $formation->start_date }}" class="form-control datetimepicker" name="educations[{{ $index }}][start_date]">
-                                                        <span class="icon"><i class="fa-regular fa-calendar-days"></i></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6">
-                                                <div class="form-wrap">
-                                                    <label class="col-form-label">Date de fin <span class="text-danger">*</span></label>
-                                                    <div class="form-icon">
-                                                        <input type="text" value="{{ $formation->end_date }}" class="form-control datetimepicker" name="educations[{{ $index }}][end_date]">
-                                                        <span class="icon"><i class="fa-regular fa-calendar-days"></i></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4 col-md-6">
-                                                <div class="form-wrap">
-                                                    <label class="col-form-label">Nombre d'années <span class="text-danger">*</span></label>
-                                                    <input type="text" value="{{ $formation->years }}" class="form-control" name="educations[{{ $index }}][years]">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12">
-                                                <div class="form-wrap">
-                                                    <label class="col-form-label">Description <span class="text-danger">*</span></label>
-                                                    <textarea class="form-control" rows="3" name="educations[{{ $index }}][description]">{{ $formation->description }}</textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endforeach
-                                    @endif
-                                </div>
-                            </div>
 
-                            <div class="modal-btn">
-                                <button type="button" class="btn btn-primary prime-btn" id="add-another">Ajouter une autre</button>
+                                    <div class="setting-title">
+                                        <h5>Photos du cabinet
+                                        </h5>
+                                    </div>
+                                    <div class="settin-card">
+                                        <div class="form-group">
+                                            <input type="file" required name="photos[]" multiple class="form-control" accept="image/*" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="file" required name="photos[]" multiple class="form-control" accept="image/*" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="file" required name="photos[]" multiple class="form-control" accept="image/*" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="file" required name="photos[]" multiple class="form-control" accept="image/*" required>
+                                        </div>
+                                    </div>
                             </div>
                             <div class="modal-btn text-end">
                                 <button type="submit" class="btn btn-primary prime-btn">Enregistrer</button>

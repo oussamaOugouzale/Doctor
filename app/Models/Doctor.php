@@ -38,4 +38,10 @@ class Doctor extends Authenticatable
     public function formations(){
         return $this->hasMany(Formation::class);
     }
+    public function cabinets(){
+        return $this->hasMany(Cabinet::class);
+    }
+    public function pratique(){
+        return $this->hasOne(Pratique::class);
+    }
 }
