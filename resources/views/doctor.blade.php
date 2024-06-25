@@ -20,37 +20,16 @@
         <div class="navbar">
             <img src="{{ asset('images/doccure.png') }}" alt="">
             <ul class="ul">
-                <li class="current"><a href="">Medecin</a></li>
-                <li><a href="">Vétérinaires</a><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg></li>
-                <li><a href="">Pharmacies</a><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg></li>
-                <li><a href="">Laboratoires</a><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg></li>
-                <li><a href="">Médicaments</a><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F2937" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg></li>
+                <li class=""><a href="">Home</a></li>
+                <li class=""><a href="">Contact</a></li>
+                <li class=""><a href="">Qui somme nous ?</a></li>
+                
             </ul>
             <div class="connection">
-                <Button>
-                    <a href="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg> Register
-                    </a>
-                </Button>
-                <Button>
-                    <a href="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-lock">
-                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                        </svg> Login
-                    </a>
-                </Button>
+                <button>
+                    <a href="{{route('patientLogout')}}">Se déconnecter</a>
+                </button>
+            </ul>
             </div>
         </div>
         @if(isset($doctor))
@@ -63,7 +42,7 @@
             <div class="doctorInformations ">
                 <div class="info">
                     <div class="firstPart">
-                        <img src="{{ asset('images/doctor-thumb.jpg') }}" alt="profile image">
+                        <img src="{{asset($doctor->photo)}}" alt="profile image">
                         <div class="details">
                             <div>
                                 <h2>Dr {{$doctor->nom .' '.$doctor->prenom}}</h2>
@@ -86,10 +65,10 @@
                                     </span>
                                 </div>
                                 <ul>
-                                    <li><a href=""><img src="{{ asset('images/feature-01.jpg') }}" alt=""></a></li>
-                                    <li><a href=""><img src="{{ asset('images/feature-02.jpg') }}" alt=""></a></li>
-                                    <li><a href=""><img src="{{ asset('images/feature-01.jpg') }}" alt=""></a></li>
-                                    <li><a href=""><img src="{{ asset('images/feature-02.jpg') }}" alt=""></a></li>
+                                    <li><a href="{{ asset('images/feature-01.jpg') }}"><img src="{{ asset('images/feature-01.jpg') }}" alt=""></a></li>
+                                    <li><a href="{{ asset('images/feature-02.jpg') }}"><img src="{{ asset('images/feature-02.jpg') }}" alt=""></a></li>
+                                    <li><a href="{{ asset('images/feature-01.jpg') }}"><img src="{{ asset('images/feature-01.jpg') }}" alt=""></a></li>
+                                    <li><a href="{{ asset('images/feature-02.jpg') }}"><img src="{{ asset('images/feature-02.jpg') }}" alt=""></a></li>
                                 </ul>
                                 <div class="services">
                                     <span>Service1 Service</span>
@@ -105,9 +84,8 @@
                             <li><i class="fas fa-phone"></i> {{$doctor->coordonnes->tele_mobile}} </li>
                             <li><i class="fas fa-phone-alt"></i> {{$doctor->coordonnes->tele_fixe}} </li>
                         </ul>
-
                         <Button>
-                            <a href="">Prendere RDV</a>
+                            <a href="{{ route('prendreRdv', ['id' => $doctor->id]) }}">Prendre RDV</a>
                         </Button>
                     </div>
                 </div>
@@ -132,7 +110,7 @@
                 <div class="body">
                     <div class="hidden dv first">
                         <div>
-                            
+
                         </div>
                         <div class="info-block">
                             <h1>Formations et Diplômes</h1>
@@ -144,7 +122,7 @@
                                 </div>
                                 <div class="content">
                                     <h3>{{$formation->formation}}</h3>
-                                    <span>{{$formation->institution_name 
+                                    <span>{{$formation->institution_name
                                     .' ('.$formation->start_date .' - '.$formation->end_date . ' ('.$formation->years.'))'
                                     }}</span>
                                     <span>{{ $formation->description }}</span>
@@ -249,7 +227,7 @@
                                 <li><img src="{{ asset('icons/arrow.png') }}" alt="arrow"> {{$doctor->specialites->specialite}}</li>
                                 <li><img src="{{ asset('icons/arrow.png') }}" alt="arrow"> {{$doctor->specialites->autre_specialite}}</li>
                             </div>
-                            
+
                             </ul>
                         </div>
                     </div>

@@ -1,26 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored De doccure.dreamstechnologies.com/laravel/template/public/doctor-business-settings by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 19 May 2024 01:36:15 GMT -->
-<!-- Added by HTTrack -->
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
     <meta charset="utf-8">
     <title>Doccure</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The responsive professional Doccure template offers many features, like scheduling appointments with  top doctors, clinics, and hospitals via voice, video call & chat.">
-    <meta name="keywords" content="practo clone, doccure, doctor appointment, Practo clone html template, doctor booking template">
-    <meta name="author" content="Practo Clone HTML Template - Doctor Booking Template">
-    <meta property="og:url" content="https://doccure.dreamstechnologies.com/html/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Doctors Appointment HTML Website Templates | Doccure">
-    <meta property="og:description" content="The responsive professional Doccure template offers many features, like scheduling appointments with  top doctors, clinics, and hospitals via voice, video call & chat.">
     <meta property="og:image" content="assets/img/preview-banner.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:domain" content="https://doccure.dreamstechnologies.com/html/">
-    <meta property="twitter:url" content="https://doccure.dreamstechnologies.com/html/">
-    <meta name="twitter:title" content="Doctors Appointment HTML Website Templates | Doccure">
-    <meta name="twitter:description" content="The responsive professional Doccure template offers many features, like scheduling appointments with  top doctors, clinics, and hospitals via voice, video call & chat.">
     <meta name="twitter:image" content="assets/img/preview-banner.jpg">
     <title>Doccure</title>
 
@@ -86,7 +74,7 @@
                         <h2 class="breadcrumb-title">Doctor Profile</h2>
                         <nav aria-label="breadcrumb" class="page-breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="https://doccure.dreamstechnologies.com/laravel/template/public">Home</a></li>
+                                <li class="breadcrumb-item"><a href="">Home</a></li>
                                 <li class="breadcrumb-item" aria-current="page">Doctor Profile</li>
                             </ol>
                         </nav>
@@ -107,7 +95,7 @@
                                         <img src="assets/img/doctors-dashboard/doctor-profile-img.jpg" alt="User Image">
                                     </a>
                                     <div class="profile-det-info">
-                                        <h3><a href="doctor-profile.html">Dr Edalin Hendry</a></h3>
+                                        <h3><a href="doctor-profile.html">Dr {{Auth::guard('doctor')->user()->nom .' '.Auth::guard('doctor')->user()->prenom}}</a></h3>
                                         <div class="patient-details">
                                             <h5 class="mb-0">ttttttttttttttest, simthinnnng</h5>
                                         </div>
@@ -120,40 +108,34 @@
                                 <nav class="dashboard-menu">
                                     <ul>
                                         <li class>
-                                            <a href="doctor-dashboard.html">
+                                            <a href="{{route('dashboard')}}">
                                                 <i class="fa-solid fa-shapes"></i>
                                                 <span>Dashboard</span>
                                             </a>
                                         </li>
-                                        <li class>
-                                            <a href="doctor-request.html">
-                                                <i class="fa-solid fa-calendar-check"></i>
-                                                <span>Requests</span>
-                                                <small class="unread-msg">2</small>
-                                            </a>
-                                        </li>
+                                        
                                         <li class>
                                             <a href="appointments.html">
                                                 <i class="fa-solid fa-calendar-days"></i>
-                                                <span>Appointments</span>
+                                                <span>Rendez-vous</span>
                                             </a>
                                         </li>
                                         <li class>
                                             <a href="my-patients.html">
                                                 <i class="fa-solid fa-user-injured"></i>
-                                                <span>My Patients</span>
+                                                <span>Mes patients</span>
                                             </a>
                                         </li>
                                         <li class="active">
                                             <a href="doctor-profile-settings.html">
                                                 <i class="fa-solid fa-user-pen"></i>
-                                                <span>Profile Settings</span>
+                                                <span>Paramétre du profil</span>
                                             </a>
                                         </li>
                                         <li class>
                                             <a href="doctor-change-password.html">
                                                 <i class="fa-solid fa-key"></i>
-                                                <span> Password</span>
+                                                <span> Mot de passe</span>
                                             </a>
                                         </li>
                                         <li class>
@@ -173,32 +155,26 @@
                     <div class="col-lg-8 col-xl-9">
 
                         <div class="dashboard-header">
-                            <h3>Profile Settings</h3>
+                            <h3>Paramétre du profil</h3>
                         </div>
 
                         <div class="setting-tab">
                             <div class="appointment-tabs">
                                 <ul class="nav">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{route('profile-settings-details')}}">Informations personelles</a>
+                                        <a class="nav-link" href="{{route('profile-settings-details')}}">Informations personnelles</a>
+                                    </li>
+                                    <li class="nav-item ">
+                                        <a class="nav-link " href="{{route('profile-settings-coordonnes')}}">Coordonnées</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{route('profile-settings-coordonnes')}}">Coordonnés</a>
+                                        <a class="nav-link " href="{{route('profile-settings-formations')}}">Spécialités</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="doctor-education-settings.html">Education</a>
+                                        <a class="nav-link " href="{{route('profile-settings-pratiques')}}">Pratiques et photo</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="doctor-awards-settings.html">Awards</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="doctor-insurance-settings.html">Insurances</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="doctor-clinics-settings.html">Clinics</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="doctor-business-settings.html">Business Hours</a>
+                                        <a class="nav-link active" href="{{route('profile-settings-hours')}}">Horaires de travail</a>
                                     </li>
                                 </ul>
                             </div>

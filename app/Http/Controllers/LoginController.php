@@ -17,10 +17,10 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         // Doctor::create([
-        //     'nom'=> 'doc1',
-        //     'prenom'=> 'docp1',
+        //     'nom'=> 'doctor3',
+        //     'prenom'=> 'prenom3',
         //     'numero_tel'=> '3333333',
-        //     'email'=> 'doc@gmail.com',
+        //     'email'=> 'doc3@gmail.com',
         //     'password'=> Hash::make('Doc2004@2004'),
         //     'photo'=> 'photo',
             
@@ -74,6 +74,10 @@ class LoginController extends Controller
 
     public function logout(){
         Auth::guard('doctor')->logout();
+        return redirect()->back();
+    }
+    public function logoutPatient(){
+        Auth::guard('patient')->logout();
         return redirect()->back();
     }
 }

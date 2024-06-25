@@ -136,11 +136,13 @@ class DoctorController extends Controller
 
         if ($request->hasFile('photos')) {
             foreach ($request->file('photos') as $photo) {
-                $path = $photo->store('public/photos');
+                $fileName = time() . '_' . $photo->getClientOriginalName();
+                $destinationPath = public_path('photos');
+                $photo->move($destinationPath, $fileName);
 
                 Cabinet::create([
                     'doctor_id' => $doctorId,
-                    'photo' => $path
+                    'photo' => 'photos/' . $fileName
                 ]);
             }
         }

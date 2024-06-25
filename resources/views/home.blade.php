@@ -1,24 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
     <meta charset="utf-8">
     <title>Doccure</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="The responsive professional Doccure template offers many features, like scheduling appointments with  top doctors, clinics, and hospitals via voice, video call & chat.">
-    <meta name="keywords" content="practo clone, doccure, doctor appointment, Practo clone html template, doctor booking template">
-    <meta name="author" content="Practo Clone HTML Template - Doctor Booking Template">
-    <meta property="og:url" content="https://doccure.dreamstechnologies.com/html/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Doctors Appointment HTML Website Templates | Doccure">
-    <meta property="og:description" content="The responsive professional Doccure template offers many features, like scheduling appointments with  top doctors, clinics, and hospitals via voice, video call & chat.">
     <meta property="og:image" content="assets/img/preview-banner.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:domain" content="https://doccure.dreamstechnologies.com/html/">
-    <meta property="twitter:url" content="https://doccure.dreamstechnologies.com/html/">
-    <meta name="twitter:title" content="Doctors Appointment HTML Website Templates | Doccure">
-    <meta name="twitter:description" content="The responsive professional Doccure template offers many features, like scheduling appointments with  top doctors, clinics, and hospitals via voice, video call & chat.">
     <meta name="twitter:image" content="assets/img/preview-banner.jpg">
     <title>Doccure</title>
 
@@ -891,125 +881,7 @@
         </div>
 
 
-        <footer class="footer footer-three">
-
-            <div class="footer-top">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6">
-
-                            <div class="footer-widget footer-about">
-                                <div class="footer-logo">
-                                    <img src="assets/img/footer-logo.png" alt="logo">
-                                </div>
-                                <div class="footer-about-content">
-                                    <p>Effortlessly schedule your medical appointments with Doccure. Connect with healthcare
-                                        professionals, manage appointments & prioritize your well being </p>
-                                    <div class="social-icon">
-                                        <ul>
-                                            <li> <a href="javascript:void(0);"><i class="fa-brands fa-facebook"></i></a>
-                                            </li>
-                                            <li> <a href="javascript:void(0);"><i class="fab fa-twitter"></i> </a>
-                                            </li>
-                                            <li> <a href="javascript:void(0);"><i class="fab fa-linkedin-in"></i></a>
-                                            </li>
-                                            <li> <a href="javascript:void(0);"><i class="fab fa-instagram"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-
-                            <div class="footer-widget footer-menu">
-                                <h2 class="footer-title">For Patients</h2>
-                                <ul>
-                                    <li><a href="search.html">Search for Doctors</a>
-                                    </li>
-                                    <li><a href="login.html">Login</a>
-                                    </li>
-                                    <li><a href="register.html">Register</a>
-                                    </li>
-                                    <li><a href="booking.html">Booking</a>
-                                    </li>
-                                    <li><a href="patient-dashboard.html">Patient Dashboard</a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-
-                            <div class="footer-widget footer-menu">
-                                <h2 class="footer-title">For Doctors</h2>
-                                <ul>
-                                    <li><a href="appointments.html">Appointments</a>
-                                    </li>
-                                    <li><a href="chat.html">Chat</a>
-                                    </li>
-                                    <li><a href="login.html">Login</a>
-                                    </li>
-                                    <li><a href="doctor-register.html">Register</a>
-                                    </li>
-                                    <li><a href="doctor-dashboard.html">Doctor Dashboard</a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </div>
-                        <div class="col-lg-3 col-md-6">
-
-                            <div class="footer-widget footer-contact">
-                                <h2 class="footer-title">Contact Us</h2>
-                                <div class="footer-contact-info">
-                                    <div class="footer-address"> <span><i class="fas fa-map-marker-alt"></i></span>
-                                        <p>3556 Beech Street, San Francisco,
-                                            <br>California, CA 94108
-                                        </p>
-                                    </div>
-                                    <p class="mb-0"> <i class="fas fa-envelope"></i>
-                                        <a href="https://doccure.dreamstechnologies.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ff9b909c9c8a8d9abf9a879e928f939ad19c9092">[email&#160;protected]</a></p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="footer-bottom">
-                <div class="container-fluid">
-
-                    <div class="copyright">
-                        <div class="row">
-                            <div class="col-md-6 col-lg-6">
-                                <div class="copyright-text">
-                                    <p class="mb-0">Copyright © 2024 Doccure. All Rights Reserved</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-6">
-
-                                <div class="copyright-menu">
-                                    <ul class="policy-menu">
-                                        <li><a href="terms-condition.html">Terms and Conditions</a>
-                                        </li>
-                                        <li><a href="privacy-policy.html">Policy</a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </footer>
-
+        
 
         <div class="mouse-cursor cursor-outer"></div>
         <div class="mouse-cursor cursor-inner"></div>

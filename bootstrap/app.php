@@ -13,6 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
             'auth' => App\Http\Middleware\AuthMiddleware::class,
+            'patAuth' => App\Http\Middleware\PatMiddleware::class,
             'doctorMiddleware' => App\Http\Middleware\DoctorMiddleware::class,
         ]);
     })
