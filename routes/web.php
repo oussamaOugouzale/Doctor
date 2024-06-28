@@ -40,9 +40,7 @@ Route::middleware('auth')->group(function () {
         ->name('set-profile-hours-settings');
 
     // Tableau de bord des docteurs
-    Route::get('dashboard/', function () {
-        return view('doctor.dashboard.dashboard');
-    })->name('dashboard');
+    Route::get('dashboard/', [App\Http\Controllers\DoctorController::class, 'index'])->name('dashboard');
 
     Route::middleware('doctorMiddleware')->group(function () {
         Route::get('/profile-settings-hours', function () {
@@ -91,6 +89,22 @@ Route::middleware('auth')->group(function () {
     // Formations des docteurs
     Route::post('/doctorFormations', [App\Http\Controllers\DoctorController::class, 'store'])
         ->name('doctorFormation');
+
+
+    //doctor appointment 
+    Route::get('/doctor-appointment', [App\Http\Controllers\DoctorController::class, 'appointment'])
+        ->name('appointment');
+
+    //doctor password 
+    Route::post('/doctor-change-password', [App\Http\Controllers\DoctorController::class, 'password'])
+        ->name('doctor-change-password');
+    Route::get(
+        '/doctor-password',
+        function () {
+            return view('doctor.dashboard.password');
+        }
+    )
+        ->name('doctor-password');
 });
 
 // Affichage d'un docteur
@@ -126,3 +140,8 @@ Route::middleware('patAuth')->group(function () {
     Route::get('/rdv', [App\Http\Controllers\RdvController::class, 'store'])->name('rdv.store');
     Route::post('/store-selected-time', [App\Http\Controllers\RdvController::class, 'storeSelectedTime'])->name('storeSelectedTime');
 });
+
+
+Route::post('/cancel-rdv', [App\Http\Controllers\RdvController::class, 'cancelRdv'])->name('cancelRdv');
+Route::post('/accept-rdv', [App\Http\Controllers\RdvController::class, 'acceptRdv'])->name('acceptRdv');
+

@@ -27,4 +27,8 @@ class Patient extends Authenticatable
     protected $guarded = [
         'id'
     ];
+
+    public function rdv(){
+        return $this->hasMany(Rdv::class);
+    }
 }

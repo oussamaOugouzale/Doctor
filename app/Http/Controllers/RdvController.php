@@ -19,25 +19,24 @@ class RdvController extends Controller
         $doctor_id = Session::get('doctor_id');
         $horaire = Session::get('selected_time');
         $jour = Session::get('selected_date');
+        $motif = Session::get('motif');
         $patient_id = Auth::guard('patient')->user()->id;
 
         if (!$doctor_id || !$patient_id) {
             return response()->json(['error' => 'Informations du docteur ou du patient manquantes dans la session.'], 400);
         }
 
-        // Format the time correctly
         $time = Carbon::createFromFormat('g:i A', $horaire)->format('H:i:s');
 
-        // Validate the date format and create a Carbon instance
         if (!Carbon::createFromFormat('Y-m-d', $jour)) {
             return response()->json(['error' => 'Format de date invalide.'], 400);
         }
 
         $date = Carbon::createFromFormat('Y-m-d', $jour)->toDateString();
-
         Rdv::create([
             'doctor_id' => $doctor_id,
             'patient_id' => $patient_id,
+            'motif' => $motif,
             'horaire' => $time,
             'jour' => $date,
         ]);
@@ -71,15 +70,17 @@ class RdvController extends Controller
     {
         $request->validate([
             'nom' => 'required|string',
-            'prenom' => 'required|string',
+            'motif' => 'required|string',
             'phone' => 'required|numeric|digits:10'
         ]);
 
         $phone = '+212' . substr($request->phone, 1);
+        $motif = $request->input('motif');
 
         $code = rand(10000, 99999);
 
         Session::put('confirmation_code', $code);
+        Session::put('motif', $motif);
         Session::put('phone', $phone);
         Session::put('nom', $request->nom);
         Session::put('prenom', $request->prenom);
@@ -146,6 +147,32 @@ class RdvController extends Controller
 
         return view('rdv', compact('doctor', 'horaires_reserves', 'jours'));
     }
+
+
+    public function cancelRdv(Request $request)
+    {
+        $rdv = Rdv::find($request->rdv_id);
+        if ($rdv) {
+            $rdv->etat = 'annule'; 
+            $rdv->save();
+            return response()->json(['success' => 'Rendez-vous annulé avec succès.']);
+        } else {
+            return response()->json(['error' => 'Rendez-vous non trouvé.'], 404);
+        }
+    }
+
+    public function acceptRdv(Request $request)
+    {
+        $rdv = Rdv::find($request->rdv_id);
+        if ($rdv) {
+            $rdv->etat = 'accepte'; 
+            $rdv->save();
+            return response()->json(['success' => 'Rendez-vous accepté avec succès.']);
+        } else {
+            return response()->json(['error' => 'Rendez-vous non trouvé.'], 404);
+        }
+    }
+
 
 
 

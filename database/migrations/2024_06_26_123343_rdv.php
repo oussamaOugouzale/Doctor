@@ -5,14 +5,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRdvTable extends Migration
-{
+return new class extends Migration {
     public function up()
     {
         Schema::create('rdv', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('doctor_id');
             $table->unsignedBigInteger('patient_id');
+            $table->string('motif');
+            $table->string('etat')->nullable();
             $table->time('horaire');
             $table->date('jour');
             $table->timestamps();
@@ -26,4 +27,4 @@ class CreateRdvTable extends Migration
     {
         Schema::dropIfExists('rdv');
     }
-}
+};

@@ -26,22 +26,32 @@ class Doctor extends Authenticatable
         'id'
     ];
 
-    public function horaires(){
+    public function horaires()
+    {
         return $this->hasMany(Horaire::class);
     }
-    public function coordonnes(){
+    public function coordonnes()
+    {
         return $this->hasOne(Coordonne::class);
     }
-    public function specialites(){
+    public function specialites()
+    {
         return $this->hasOne(Specialite::class);
     }
-    public function formations(){
+    public function formations()
+    {
         return $this->hasMany(Formation::class);
     }
-    public function cabinets(){
+    public function cabinets()
+    {
         return $this->hasMany(Cabinet::class);
     }
-    public function pratique(){
+    public function pratique()
+    {
         return $this->hasOne(Pratique::class);
+    }
+    public function rdv()
+    {
+        return $this->hasMany(Rdv::class);
     }
 }

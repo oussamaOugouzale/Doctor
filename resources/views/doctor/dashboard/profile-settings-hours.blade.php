@@ -88,18 +88,19 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-xl-3 theiaStickySidebar">
+
                         <div class="profile-sidebar doctor-sidebar profile-sidebar-new">
                             <div class="widget-profile pro-widget-content">
                                 <div class="profile-info-widget">
-                                    <a href="doctor-profile.html" class="booking-doc-img">
-                                        <img src="assets/img/doctors-dashboard/doctor-profile-img.jpg" alt="User Image">
+                                    <a href="" class="booking-doc-img">
+                                        <img src="{{Auth::guard('doctor')->user()->photo}}" alt="User Image">
                                     </a>
                                     <div class="profile-det-info">
-                                        <h3><a href="doctor-profile.html">Dr {{Auth::guard('doctor')->user()->nom .' '.Auth::guard('doctor')->user()->prenom}}</a></h3>
+                                        <h3><a href="">Dr {{Auth::guard('doctor')->user()->nom .' '.Auth::guard('doctor')->user()->prenom}}</a></h3>
                                         <div class="patient-details">
-                                            <h5 class="mb-0">ttttttttttttttest, simthinnnng</h5>
+                                            <h5 class="mb-0">ttttttttttttttest, somthinnnng</h5>
                                         </div>
-                                        <span class="badge doctor-role-badge"><i class="fa-solid fa-circle"></i>Dentist</span>
+                                        <span class="badge doctor-role-badge"><i class="fa-solid fa-circle"></i>{{Auth::guard('doctor')->user()->specialites->specialite}}</span>
                                     </div>
                                 </div>
                             </div>
@@ -107,42 +108,37 @@
                             <div class="dashboard-widget">
                                 <nav class="dashboard-menu">
                                     <ul>
-                                        <li class>
+                                        <li class="">
                                             <a href="{{route('dashboard')}}">
                                                 <i class="fa-solid fa-shapes"></i>
                                                 <span>Dashboard</span>
                                             </a>
                                         </li>
-                                        
+
                                         <li class>
-                                            <a href="appointments.html">
+                                            <a href="{{route('appointment')}}">
                                                 <i class="fa-solid fa-calendar-days"></i>
                                                 <span>Rendez-vous</span>
                                             </a>
                                         </li>
-                                        <li class>
-                                            <a href="my-patients.html">
-                                                <i class="fa-solid fa-user-injured"></i>
-                                                <span>Mes patients</span>
-                                            </a>
-                                        </li>
+
                                         <li class="active">
-                                            <a href="doctor-profile-settings.html">
+                                            <a href="{{route('profile-settings-hours')}}">
                                                 <i class="fa-solid fa-user-pen"></i>
                                                 <span>Paramétre du profil</span>
                                             </a>
                                         </li>
                                         <li class>
-                                            <a href="doctor-change-password.html">
+                                            <a href="{{route('doctor-password')}}">
                                                 <i class="fa-solid fa-key"></i>
                                                 <span> Mot de passe</span>
                                             </a>
                                         </li>
                                         <li class>
                                             <form action="">
-                                                <a href="login.html">
+                                                <a href="{{route('doctorLogout')}}">
                                                     <i class="fa-solid fa-calendar-check"></i>
-                                                    <span>Logout</span>
+                                                    <span>Se deconnecter</span>
                                                 </a>
                                             </form>
                                         </li>

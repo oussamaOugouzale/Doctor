@@ -1,5 +1,4 @@
 <?php
-// config/auth.php
 return [
     'guards' => [
         'web' => [

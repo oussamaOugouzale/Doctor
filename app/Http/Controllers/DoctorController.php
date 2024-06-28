@@ -12,9 +12,65 @@ use App\Models\Coordonne;
 use App\Models\Specialite;
 use App\Models\Formation;
 use Auth;
+use PHPUnit\Framework\Constraint\IsEmpty;
+use App\Models\Rdv;
+use Carbon\Carbon;
+use Hash;
 
 class DoctorController extends Controller
 {
+
+    public function index()
+    {
+        $rdvs = Auth::guard('doctor')->user()->rdv()->get();
+        $totalRdv = Rdv::count();
+        $today = Carbon::today()->toDateString();
+        $patientsToday = Rdv::where('jour', $today)->distinct('patient_id')->count('patient_id');
+        if ($rdvs->isEmpty())
+            return view('doctor.dashboard.dashboard');
+        else
+            return view('doctor.dashboard.dashboard', compact('rdvs', 'totalRdv', 'patientsToday'));
+
+    }
+
+    public function password(Request $request)
+    {
+        $request->validate(
+            [
+                'oldPassword' => 'required|string',
+                'newPassword' => 'required|string|confirmed',
+            ]
+        );
+        $oldPassword = $request->oldPassword;
+        $newPassword = $request->newPassword;
+        $confirmedPassword = $request->newPassword_confirmation;
+        $user = Auth::guard('doctor')->user();
+        if (!Hash::check($oldPassword, $user->password)) {
+            return back()->withInput()->withErrors([
+                'password' => 'Mot de passe invalide'
+            ]);
+        } else {
+            $user->update([
+                'password' => Hash::make($request->newPassword),
+            ]);
+            return back()->with('success', 'mot de passe a été modfier avec succès');
+        }
+
+
+    }
+
+    public function appointment()
+    {
+        $rdvs = Auth::guard('doctor')->user()->rdv()->get();
+        $aVenir = Rdv::where('etat', null)->count();
+        $annule = Rdv::where('etat', 'annule')->count();
+        $complete = Rdv::where('etat', 'accepte')->count();
+        if ($rdvs->isEmpty())
+            return view('doctor.dashboard.appointments');
+        else
+            return view('doctor.dashboard.appointments', compact('rdvs', 'aVenir', 'annule', 'complete'));
+    }
+
     public function information(Request $request)
     {
         $request->validate([

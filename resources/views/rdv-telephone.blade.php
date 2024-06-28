@@ -108,13 +108,14 @@
                             <form action="{{ route('sendCode') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="nom">Nom</label>
-                                    <input type="text" class="form-control" id="nom" name="nom" required>
+                                    <label for="nom">Motif de consultation</label>
+                                    <input type="text" class="form-control" id="motif" name="motif" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="prenom">Prénom</label>
-                                    <input type="text" class="form-control" id="prenom" name="prenom" required>
+                                    <label for="nom">Nom/Prénom</label>
+                                    <input type="text" class="form-control" id="nom" name="nom" required>
                                 </div>
+                                
                                 <div class="form-group">
                                     <label for="phone">Numéro de téléphone</label>
                                     <input type="text" class="form-control" id="phone" name="phone" required>

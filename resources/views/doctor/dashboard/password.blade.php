@@ -28,6 +28,12 @@
     <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}">
 
     <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@22.0.1/build/css/intlTelInput.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@22.0.1/build/css/intlTelInput.css">
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@22.0.1/build/js/intlTelInput.min.js"></script>
 </head>
 <body>
 
@@ -58,29 +64,31 @@
                             </a>
                         </div>
                         <ul class="main-nav">
-                            
+
                         </ul>
                     </div>
                     <ul class="nav header-navbar-rht">
                         </li>
                         <li class="nav-item">
                             <a href="{{route('doctorLogout')}}">Se déconnecter</a>
-                        </ul>
-                        </li>
+                    </ul>
+                    </li>
                     </ul>
                 </nav>
             </div>
         </header>
 
+
         <div class="breadcrumb-bar-two">
             <div class="container">
                 <div class="row align-items-center inner-banner">
                     <div class="col-md-12 col-12 text-center">
-                        <h2 class="breadcrumb-title">Doctor Profile</h2>
+                        <h2 class="breadcrumb-title">Dashboard</h2>
                         <nav aria-label="breadcrumb" class="page-breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="">Home</a></li>
-                                <li class="breadcrumb-item" aria-current="page">Doctor Profile</li>
+                                <li class="breadcrumb-item"><a href="">Home</a>
+                                </li>
+                                <li class="breadcrumb-item" aria-current="page">Dashboard</li>
                             </ol>
                         </nav>
                     </div>
@@ -89,7 +97,7 @@
         </div>
 
 
-        <div class="content doctor-content">
+        <div class="content">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-4 col-xl-3 theiaStickySidebar">
@@ -113,7 +121,7 @@
                             <div class="dashboard-widget">
                                 <nav class="dashboard-menu">
                                     <ul>
-                                        <li class="">
+                                        <li >
                                             <a href="{{route('dashboard')}}">
                                                 <i class="fa-solid fa-shapes"></i>
                                                 <span>Dashboard</span>
@@ -127,13 +135,13 @@
                                             </a>
                                         </li>
 
-                                        <li class="active">
+                                        <li class="">
                                             <a href="{{route('profile-settings-hours')}}">
                                                 <i class="fa-solid fa-user-pen"></i>
                                                 <span>Paramétre du profil</span>
                                             </a>
                                         </li>
-                                        <li class>
+                                        <li class="active">
                                             <a href="{{route('doctor-password')}}">
                                                 <i class="fa-solid fa-key"></i>
                                                 <span> Mot de passe</span>
@@ -154,34 +162,10 @@
 
                     </div>
                     <div class="col-lg-8 col-xl-9">
-
                         <div class="dashboard-header">
-                            <h3>Profile Settings</h3>
+                            <h3>Change Password</h3>
                         </div>
-
-                        <div class="setting-tab">
-                            <div class="appointment-tabs">
-                                <ul class="nav">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{route('profile-settings-details')}}">Informations personnelles</a>
-                                    </li>
-                                    <li class="nav-item ">
-                                        <a class="nav-link active" href="{{route('profile-settings-coordonnes')}}">Coordonnées</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link " href="{{route('profile-settings-formations')}}">Spécialités</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link " href="{{route('profile-settings-pratiques')}}">Pratiques et photo</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{route('profile-settings-hours')}}">Horaires de travail</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <form action="{{route('doctorCoordonnes')}}" method="POST" >
+                        <form action="{{route('doctor-change-password')}}" method="POST">
                             @csrf
                             @if(session('success'))
                             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -189,82 +173,76 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                             @endif
-                            @if(session('error'))
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                {{ session('error') }}
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                            @endif
-
-                            <div class="setting-title">
-                                <h5>COORDONNÉES
-                                </h5>
-                            </div>
-                            <div class="setting-card">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="form-wrap">
-                                            <label class="col-form-label">Adresse <span class="text-danger">*</span></label>
-                                            <input type="text" required value="{{ Auth::guard('doctor')->user()->coordonnes ? Auth::guard('doctor')->user()->coordonnes->adresse : '' }}" placeholder="Rue, étage, centre ..." required name="adresse" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="form-wrap">
-                                            <label class="col-form-label">Ville <span class="text-danger">*</span></label>
-                                            <input type="text" required value="{{ Auth::guard('doctor')->user()->coordonnes ? Auth::guard('doctor')->user()->coordonnes->ville : '' }}" required name="ville" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="form-wrap">
-                                            <label class="col-form-label">Délégation <span class="text-danger">*</span></label>
-                                            <input type="text" required value="{{ Auth::guard('doctor')->user()->coordonnes ? Auth::guard('doctor')->user()->coordonnes->delegation : '' }}" required name="delegation" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="form-wrap">
-                                            <label class="col-form-label">téléphone fixe <span class="text-danger">*</span></label>
-                                            <input type="text" required value="{{ Auth::guard('doctor')->user()->coordonnes ? Auth::guard('doctor')->user()->coordonnes->tele_fixe : '' }}" required name="tele_fixe" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="form-wrap">
-                                            <label class="col-form-label">téléphone mobile <span class="text-danger">*</span></label>
-                                            <div class="input-block input-block-new mb-0">
-                                                <input name="tele_mobile" required value="{{ Auth::guard('doctor')->user()->coordonnes ? Auth::guard('doctor')->user()->coordonnes->tele_mobile : '' }}" required class="input-tags form-control" id="inputBox3" type="text" data-role="tagsinput" name="tele_mobile">
+                            <div class="card pass-card">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="input-block input-block-new">
+                                                <label class="form-label">Old Password</label>
+                                                <input type="password" name="oldPassword" class="form-control">
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="form-wrap">
-                                            <label class="col-form-label">Latitude <span class="text-danger">*</span></label>
-                                            <input type="text" required value="{{ Auth::guard('doctor')->user()->coordonnes ? Auth::guard('doctor')->user()->coordonnes->latitude : '' }}" id="latitude" name="latitude" class="form-control" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="form-wrap">
-                                            <label class="col-form-label">Longitude <span class="text-danger">*</span></label>
-                                            <input type="text" required value="{{ Auth::guard('doctor')->user()->coordonnes ? Auth::guard('doctor')->user()->coordonnes->longitude : '' }}" id="longitude" name="longitude" class="form-control" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6">
-                                        <div class="form-wrap">
-                                            <label class="col-form-label">Géolocalisation <span class="text-danger">*</span></label>
-                                            <button type="button" class="btn btn-primary" onclick="getLocation()">Obtenir la géolocalisation</button>
+                                            @error('password')
+                                            <p class="mt-2 text-sm text-red-600">{{$message}}</p>
+                                            @enderror
+                                            <div class="input-block input-block-new">
+                                                <label class="form-label" for="newPassword">New Password</label>
+                                                <div class="pass-group">
+                                                    <input type="password" name="newPassword" class="form-control pass-input" id="newPassword">
+                                                    <span class="feather-eye-off toggle-password" onclick="togglePasswordVisibility('newPassword')"></span>
+                                                </div>
+                                                @error('newPassword')
+                                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                                @enderror
+                                            </div>
+
+                                            <div class="input-block input-block-new mb-0">
+                                                <label class="form-label" for="newPassword_confirmation">Confirm Password</label>
+                                                <div class="pass-group">
+                                                    <input type="password" name="newPassword_confirmation" class="form-control pass-input-sub" id="newPassword_confirmation">
+                                                    <span class="feather-eye-off toggle-password" onclick="togglePasswordVisibility('newPassword_confirmation')"></span>
+                                                </div>
+                                                @error('newPassword_confirmation')
+                                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                                @enderror
+                                            </div>
+
+
+
+
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="modal-btn text-end">
-                                <button type="submit" class="btn btn-primary prime-btn">Enregister</button>
+                            <div class="form-set-button">
+                                <button class="btn btn-primary" type="submit">Save Changes</button>
                             </div>
                         </form>
                     </div>
                 </div>
+
             </div>
         </div>
-        
-
     </div>
+
+
+
+
+    <script>
+        function togglePasswordVisibility(inputName) {
+            const input = document.querySelector(`input[name="${inputName}"]`);
+            const eyeIcon = document.querySelector(`.toggle-password-${inputName}`);
+
+            if (input.type === 'password') {
+                input.type = 'text';
+                eyeIcon.classList.add('feather-eye');
+            } else {
+                input.type = 'password';
+                eyeIcon.classList.remove('feather-eye');
+            }
+        }
+
+    </script>
+
 
     <script src="{{ asset('public/assets/js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('public/assets/js/bootstrap.bundle.min.js') }}"></script>
@@ -276,45 +254,8 @@
     <script src="{{ asset('public/assets/js/aos.js') }}"></script>
     <script src="{{ asset('public/assets/js/script.js') }}"></script>
     <script src="../../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="a3af23efa9a8f95e5c98a8cc-|49" defer></script>
-    <script>
-        function previewImage(event) {
-            var icon = document.getElementById('icon');
-            var preview = document.getElementById('preview');
-            var file = event.target.files[0];
-            var reader = new FileReader();
-
-            reader.onload = function() {
-                preview.src = reader.result;
-                preview.style.display = 'block';
-                icon.style.display = 'none';
-            };
-
-            if (file) {
-                reader.readAsDataURL(file);
-            } else {
-                preview.style.display = 'none';
-                icon.style.display = 'block';
-            }
-        }
-
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            } else {
-                alert("Geolocation is not supported by this browser.");
-            }
-        }
-
-        function showPosition(position) {
-            var latitudeInput = document.getElementById('latitude');
-            var longitudeInput = document.getElementById('longitude');
-
-            latitudeInput.value = position.coords.latitude;
-            longitudeInput.value = position.coords.longitude;
-        }
-
-    </script>
 
 </body>
+
 
 </html>
