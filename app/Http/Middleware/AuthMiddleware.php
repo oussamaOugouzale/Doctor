@@ -17,7 +17,7 @@ class AuthMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if(!Auth::guard('doctor')->check()){
-            return redirect()->route('loginForm');
+            return redirect()->guest(route('loginForm'));
         }
 
         return $next($request);

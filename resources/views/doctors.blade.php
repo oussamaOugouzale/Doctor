@@ -73,8 +73,20 @@
                     </div>
                     <ul class="nav header-navbar-rht">
                         </li>
+                        @if(Auth::guard('patient')->user() != null)
                         <li class="nav-item">
-                            <a href="{{route('patientLogout')}}">Se déconnecter</a>
+                            <a class="nav-link header-login" href="{{route('pat-appointments')}}"><img src="assets/img/icons/user-circle.svg" alt="img">Mon Compte </a>
+                        </li>
+                        @elseif(Auth::guard('doctor')->user() != null)
+                        <li class="nav-item">
+                            <a class="nav-link header-login" href="{{route('dashboard')}}"><img src="assets/img/icons/user-circle.svg" alt="img">Dashboard </a>
+                        </li>
+                        @else
+                        <li class="nav-item">
+                            <a class="nav-link header-login" href="{{route('loginForm')}}"><img src="assets/img/icons/user-circle.svg" alt="img">Connexion /
+                                Inscription </a>
+                        </li>
+                        @endif
                     </ul>
                     </li>
                     </ul>

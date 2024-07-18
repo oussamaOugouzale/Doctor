@@ -58,15 +58,15 @@
                             </a>
                         </div>
                         <ul class="main-nav">
-                            
+
                         </ul>
                     </div>
                     <ul class="nav header-navbar-rht">
                         </li>
                         <li class="nav-item">
                             <a href="{{route('doctorLogout')}}">Se déconnecter</a>
-                        </ul>
-                        </li>
+                    </ul>
+                    </li>
                     </ul>
                 </nav>
             </div>
@@ -105,7 +105,10 @@
                                         <div class="patient-details">
                                             <h5 class="mb-0">ttttttttttttttest, somthinnnng</h5>
                                         </div>
-                                        <span class="badge doctor-role-badge"><i class="fa-solid fa-circle"></i>{{Auth::guard('doctor')->user()->specialites->specialite}}</span>
+                                        <span class="badge doctor-role-badge"><i class="fa-solid fa-circle"></i>
+                                            @if(isset(Auth::guard('doctor')->user()->specialites->specialite))
+                                            {{Auth::guard('doctor')->user()->specialites->specialite}}</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -340,7 +343,7 @@
                 </div>
             </div>
         </div>
-        
+
 
     </div>
 
@@ -381,7 +384,7 @@
     <script src="{{ asset('public/assets/js/aos.js') }}"></script>
     <script src="{{ asset('public/assets/js/script.js') }}"></script>
     <script src="../../../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="a3af23efa9a8f95e5c98a8cc-|49" defer></script>
-  
+
 
 </body>
 

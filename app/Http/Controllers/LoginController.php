@@ -23,7 +23,7 @@ class LoginController extends Controller
         //     'email'=> 'doc3@gmail.com',
         //     'password'=> Hash::make('Doc2004@2004'),
         //     'photo'=> 'photo',
-            
+
         // ]);
         // Patient::create([
         //     'nom'=> 'pat1',
@@ -50,7 +50,7 @@ class LoginController extends Controller
         if ($patient) {
             if (Hash::check($password, $patient->password)) {
                 auth()->guard('patient')->login($patient);
-                return redirect()->route('home');
+                return redirect()->intended('/home');
             } else {
                 return back()->withInput()->withErrors([
                     'password' => 'Mot de passe invalide'
@@ -59,7 +59,7 @@ class LoginController extends Controller
         } elseif ($doctor) {
             if (Hash::check($password, $doctor->password)) {
                 Auth::guard('doctor')->login($doctor);
-                return redirect()->route('dashboard');
+                return redirect()->intended('/dashboard');
             } else {
                 return back()->withInput()->withErrors([
                     'password' => 'Mot de passe invalide'
@@ -72,11 +72,13 @@ class LoginController extends Controller
         }
     }
 
-    public function logout(){
+    public function logout()
+    {
         Auth::guard('doctor')->logout();
         return redirect()->back();
     }
-    public function logoutPatient(){
+    public function logoutPatient()
+    {
         Auth::guard('patient')->logout();
         return redirect()->back();
     }

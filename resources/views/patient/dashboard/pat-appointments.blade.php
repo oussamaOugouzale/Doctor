@@ -37,7 +37,6 @@
 </head>
 <body>
     <div class="main-wrapper">
-
         <header class="header header-trans header-three header-eight">
             <div class="container">
                 <nav class="navbar navbar-expand-lg header-nav">
@@ -63,21 +62,18 @@
                             </a>
                         </div>
                         <ul class="main-nav">
-
                         </ul>
                     </div>
                     <ul class="nav header-navbar-rht">
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('doctorLogout')}}">Se déconnecter</a>
+                            <a href="{{route('patientLogout')}}">Se déconnecter</a>
                     </ul>
                     </li>
                     </ul>
                 </nav>
             </div>
         </header>
-
-
         <div class="breadcrumb-bar-two">
             <div class="container">
                 <div class="row align-items-center inner-banner">
@@ -87,7 +83,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="">Home</a>
                                 </li>
-                                <li class="breadcrumb-item" aria-current="page">Appointments</li>
+                                <li class="breadcrumb-item" aria-current="page">Rdv</li>
                             </ol>
                         </nav>
                     </div>
@@ -104,51 +100,45 @@
                             <div class="widget-profile pro-widget-content">
                                 <div class="profile-info-widget">
                                     <a href="" class="booking-doc-img">
-                                        <img src="{{Auth::guard('doctor')->user()->photo}}" alt="User Image">
+                                        <img src="" alt="User Image">
                                     </a>
                                     <div class="profile-det-info">
-                                        <h3><a href="">Dr {{Auth::guard('doctor')->user()->nom .' '.Auth::guard('doctor')->user()->prenom}}</a></h3>
+                                        <h3><a href=""> {{Auth::guard('patient')->user()->nom .' '.Auth::guard('patient')->user()->prenom}}</a></h3>
                                         <div class="patient-details">
                                             <h5 class="mb-0">ttttttttttttttest, somthinnnng</h5>
                                         </div>
-                                        @if(isset(Auth::guard('doctor')->user()->specialites) && isset(Auth::guard('doctor')->user()->specialites->specialite))
-                                        <span class="badge doctor-role-badge"><i class="fa-solid fa-circle"></i>{{ Auth::guard('doctor')->user()->specialites->specialite }}</span>
-                                        @endif
+                                        {{-- <span class="badge doctor-role-badge"><i class="fa-solid fa-circle"></i>{{Auth::guard('doctor')->user()->specialites->specialite}}</span> --}}
                                     </div>
                                 </div>
                             </div>
+
                             <div class="dashboard-widget">
                                 <nav class="dashboard-menu">
                                     <ul>
-                                        <li class="">
-                                            <a href="{{route('dashboard')}}">
-                                                <i class="fa-solid fa-shapes"></i>
-                                                <span>Dashboard</span>
-                                            </a>
-                                        </li>
+
 
                                         <li class="active">
-                                            <a href="{{route('appointment')}}">
+                                            <a href="{{route('pat-appointments')}}">
                                                 <i class="fa-solid fa-calendar-days"></i>
-                                                <span>Rendez-vous</span>
+                                                <span>Mes Rendez-vous</span>
                                             </a>
                                         </li>
 
                                         <li class="">
-                                            <a href="{{route('profile-settings-hours')}}">
+                                            <a href="{{route('pat-profile-settings')}}">
                                                 <i class="fa-solid fa-user-pen"></i>
                                                 <span>Paramétre du profil</span>
                                             </a>
                                         </li>
                                         <li class>
-                                            <a href="{{route('doctor-password')}}">
+                                            <a href="{{route('patient-password')}}">
                                                 <i class="fa-solid fa-key"></i>
                                                 <span> Mot de passe</span>
                                             </a>
                                         </li>
                                         <li class>
                                             <form action="">
-                                                <a href="{{route('doctorLogout')}}">
+                                                <a href="{{route('patientLogout')}}">
                                                     <i class="fa-solid fa-calendar-check"></i>
                                                     <span>Se deconnecter</span>
                                                 </a>
@@ -169,23 +159,13 @@
                             <div class="appointment-tabs">
                                 <ul class="nav nav-pills inner-tab " id="pills-tab" role="tablist">
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link active" id="pills-upcoming-tab" data-bs-toggle="pill" data-bs-target="#pills-upcoming" type="button" role="tab" aria-controls="pills-upcoming" aria-selected="false">A venir<span>
-                                                @if(isset($aVenir))
-                                                {{$aVenir}}
-                                                @else 0
-                                                @endif</span></button>
+                                        <button class="nav-link active" id="pills-upcoming-tab" data-bs-toggle="pill" data-bs-target="#pills-upcoming" type="button" role="tab" aria-controls="pills-upcoming" aria-selected="false">A venir<span>{{$aVenir}}</span></button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="pills-cancel-tab" data-bs-toggle="pill" data-bs-target="#pills-cancel" type="button" role="tab" aria-controls="pills-cancel" aria-selected="true">Annulé<span> @if(isset($aVenir))
-                                                {{$annule}}
-                                                @else 0
-                                                @endif</span></button>
+                                        <button class="nav-link" id="pills-cancel-tab" data-bs-toggle="pill" data-bs-target="#pills-cancel" type="button" role="tab" aria-controls="pills-cancel" aria-selected="true">Annulé<span>{{$annule}}</span></button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link" id="pills-complete-tab" data-bs-toggle="pill" data-bs-target="#pills-complete" type="button" role="tab" aria-controls="pills-complete" aria-selected="true">Complété<span> @if(isset($aVenir))
-                                                {{$complete}}
-                                                @else 0
-                                                @endif</span></button>
+                                        <button class="nav-link" id="pills-complete-tab" data-bs-toggle="pill" data-bs-target="#pills-complete" type="button" role="tab" aria-controls="pills-complete" aria-selected="true">Complété<span>{{$complete}}</span></button>
                                     </li>
                                 </ul>
                             </div>
@@ -204,7 +184,7 @@
                                                 </a>
                                                 <div class="patient-info">
                                                     <p>#Apt0001</p>
-                                                    <h6><a href="doctor-upcoming-appointment.html">{{$rdv->patient->nom}}</a></h6>
+                                                    <h6><a href="doctor-upcoming-appointment.html">Dr {{$rdv->doctor->nom}}</a></h6>
                                                 </div>
                                             </div>
                                         </li>
@@ -216,10 +196,21 @@
                                         </li>
                                         <li class="mail-info-patient">
                                             <ul>
-                                                <li><i class="fa-solid fa-envelope"></i>{{$rdv->patient->email}}
+                                                <li><i class="fa-solid fa-envelope"></i>{{$rdv->doctor->email}}
                                                 </li>
-                                                <li><i class="fa-solid fa-phone"></i>{{$rdv->patient->numero_tel}}</li>
+                                                <li><i class="fa-solid fa-phone"></i>{{$rdv->doctor->numero_tel}}</li>
                                             </ul>
+                                        </li>
+                                        <li class="appointment-detail-btn">
+                                            <a href="#" class="start-link">
+                                                <i class="fa-solid fa-calendar-check me-1">
+                                                    @if($rdv->etat === null)
+                                                    Attend
+                                                    @else
+                                                    {{$rdv->etat}}
+                                                    @endif
+                                                </i>
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -259,6 +250,17 @@
                                                 <li><i class="fa-solid fa-phone"></i>{{$rdv->patient->numero_tel}}</li>
                                             </ul>
                                         </li>
+                                        <li class="appointment-detail-btn">
+                                            <a href="#" class="start-link">
+                                                <i class="fa-solid fa-calendar-check me-1">
+                                                    @if($rdv->etat === null)
+                                                    Attend
+                                                    @else
+                                                    {{$rdv->etat}}
+                                                    @endif
+                                                </i>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                                 @endif
@@ -296,6 +298,17 @@
                                                 </li>
                                                 <li><i class="fa-solid fa-phone"></i>{{$rdv->patient->numero_tel}}</li>
                                             </ul>
+                                        </li>
+                                        <li class="appointment-detail-btn">
+                                            <a href="#" class="start-link">
+                                                <i class="fa-solid fa-calendar-check me-1">
+                                                    @if($rdv->etat === null)
+                                                    Attend
+                                                    @else
+                                                    {{$rdv->etat}}
+                                                    @endif
+                                                </i>
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>

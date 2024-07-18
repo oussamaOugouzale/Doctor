@@ -16,9 +16,8 @@ class PatMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if(!Auth::guard('patient')->check()){
-            return redirect()->route('loginForm');
+            return redirect()->guest(route('loginForm'));
         }
-
         return $next($request);
     }
 }

@@ -17,21 +17,66 @@
 <body>
     <div class="cursor"></div>
     <div class="containerr">
-        <div class="navbar">
-            <img src="{{ asset('images/doccure.png') }}" alt="">
-            <ul class="ul">
-                <li class=""><a href="">Home</a></li>
-                <li class=""><a href="">Contact</a></li>
-                <li class=""><a href="">Qui somme nous ?</a></li>
-                
-            </ul>
-            <div class="connection">
-                <button>
-                    <a href="{{route('patientLogout')}}">Se déconnecter</a>
-                </button>
-            </ul>
+        <nav class="bg-white shadow-lg">
+            <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+                <div class="relative flex items-center justify-between h-16">
+                    <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                        <!-- Mobile menu button -->
+                        <button type="button"
+                            class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500"
+                            aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+                            <span class="sr-only">Open main menu</span>
+                            <svg class="block h-6 w-6 menu-open" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                            <svg class="hidden h-6 w-6 menu-close" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                        <div class="flex-shrink-0">
+                            <img class="block lg:hidden h-8 w-auto"
+                                src="{{ asset('images/doccure.png') }}" alt="Doccure">
+                            <img class="hidden lg:block h-8 w-auto"
+                                src="{{ asset('images/doccure.png') }}" alt="Doccure">
+                        </div>
+                        <div class="hidden sm:block sm:ml-6">
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-gray-900 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                                <a href="#" class="text-gray-700 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                                <a href="#" class="text-gray-700 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Qui sommes nous ?</a>
+                            </div>
+                        </div>
+                    </div>
+                    @if(Auth::guard('patient')->user() != null)
+                    <a href="{{route('pat-appointments')}}"
+                        class="text-gray-700 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Mon
+                        Compte</a>
+                    @elseif(Auth::guard('doctor')->user() != null)
+                    <a href="{{route('dashboard')}}"
+                        class="text-gray-700 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"><img
+                            src="assets/img/icons/user-circle.svg" alt="img">Dashboard</a>
+                    @else
+                    <a href="{{route('loginForm')}}"
+                        class="text-gray-700 hover:bg-gray-100 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Connexion
+                        / Inscription</a>
+                    @endif
+                </div>
             </div>
-        </div>
+            <!-- Mobile menu, show/hide based on menu state. -->
+            <div class="sm:hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="#" class="text-gray-900 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                    <a href="#" class="text-gray-700 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                    <a href="#" class="text-gray-700 hover:bg-gray-100 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium">Qui sommes nous ?</a>
+                </div>
+            </div>
+        </nav>
         @if(isset($doctor))
         <div class="doctorProfile">
             <div class="header">
@@ -79,10 +124,7 @@
                     </div>
                     <div class="secondPart">
                         <ul>
-                            <li><i class="fas fa-map-marker-alt"></i> {{$doctor->coordonnes->adresse}}, MAROC</li>
-                            <li><i class="far fa-money-bill-alt"></i> 300DH - 1000DH <i class="fas fa-info-circle" data-bs-toggle="tooltip" title="Lorem Ipsum"></i> </li>
                             <li><i class="fas fa-phone"></i> {{$doctor->coordonnes->tele_mobile}} </li>
-                            <li><i class="fas fa-phone-alt"></i> {{$doctor->coordonnes->tele_fixe}} </li>
                         </ul>
                         <Button>
                             <a href="{{ route('prendreRdv', ['id' => $doctor->id]) }}">Prendre RDV</a>
@@ -99,13 +141,13 @@
                     <li> <a href="
                         " class="transition duration-0 hover-duration-500  flex justify-center hover:border-b-4  
                                 py-4 hover:text-sky-500 ">
-                            Locations</a> </li>
+                            </a> </li>
                     <li> <a href="
-                        " class="transition duration-0 hover:duration-500 flex justify-center  py-4 hover:border-b-4 hover:text-sky-500">Review</a>
+                        " class="transition duration-0 hover:duration-500 flex justify-center  py-4 hover:border-b-4 hover:text-sky-500"></a>
                     </li>
                     <li> <a href="
-                        " class="transition duration-0 hover-duration-500 flex justify-center py-4 hover:border-b-4 hover:text-sky-500">Bussenis
-                            hours</a> </li>
+                        " class="transition duration-0 hover-duration-500 flex justify-center py-4 hover:border-b-4 hover:text-sky-500">
+                            </a> </li>
                 </ul>
                 <div class="body">
                     <div class="hidden dv first">
@@ -258,8 +300,18 @@
                     tabContents[index].classList.remove('hidden');
                 });
             });
-        });
 
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOpenIcon = mobileMenuButton.querySelector('.menu-open');
+            const menuCloseIcon = mobileMenuButton.querySelector('.menu-close');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                menuOpenIcon.classList.toggle('hidden');
+                menuCloseIcon.classList.toggle('hidden');
+            });
+        });
     </script>
     <script src="{{ asset('js/mouse.js') }}"></script>
 </body>

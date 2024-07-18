@@ -1,63 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
-.cursor {
-    display: block;
-    width: 35px;
-    height: 35px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%);
-    border-radius: 50%;
-    background: transparent;
-    pointer-events: none;
-    z-index: 111;
-    border: 3px solid rgba(14, 130, 253, 0.5);
-    transition: all 0.2s ease-out;
-    animation: moveCursor1 .5s infinite alternate;
-}
-
-.cursor::before {
-    content: '';
-    display: block;
-    width: 11px;
-    height: 11px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background-color: #0E82FD;
-}
 
 
-@keyframes moveCursor1 {
-    from {
-        transform: scale(1);
-    }
 
-    to {
-        transform: scale(.8);
-    }
-}
 
-@keyframes moveCursor2 {
-    0% {
-        transform: scale(1);
-    }
 
-    50% {
-        transform: scale(2);
-    }
 
-    100% {
-        transform: scale(1);
-        opacity: 0;
-    }
-}
 
-/* ------------------------------------------------------------------------------------------------------- */
+
+
+
 
 
 * {
@@ -186,4 +139,4 @@ a {
 .connection svg {
     width: 18px;
     color: gray;
-}
+}  */

@@ -105,7 +105,9 @@
                                         <div class="patient-details">
                                             <h5 class="mb-0">ttttttttttttttest, somthinnnng</h5>
                                         </div>
-                                        <span class="badge doctor-role-badge"><i class="fa-solid fa-circle"></i>{{Auth::guard('doctor')->user()->specialites->specialite}}</span>
+                                        @if(isset(Auth::guard('doctor')->user()->specialites) && isset(Auth::guard('doctor')->user()->specialites->specialite))
+                                        <span class="badge doctor-role-badge"><i class="fa-solid fa-circle"></i>{{ Auth::guard('doctor')->user()->specialites->specialite }}</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

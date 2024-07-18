@@ -71,8 +71,7 @@ Route::middleware('auth')->group(function () {
     // Déconnexion
     Route::get('/doctor-logout', [App\Http\Controllers\LoginController::class, 'logout'])
         ->name('doctorLogout');
-    Route::get('/patient-logout', [App\Http\Controllers\LoginController::class, 'logoutPatient'])
-        ->name('patientLogout');
+
 
     // Informations des docteurs
     Route::post('/doctorInformations', [App\Http\Controllers\DoctorController::class, 'Information'])
@@ -116,8 +115,7 @@ Route::middleware('patAuth')->group(function () {
     Route::get('/rdv/{id}', [App\Http\Controllers\RdvController::class, 'index'])->name('prendreRdv');
 
     // Recherche de docteurs
-    Route::post('/médecin', [App\Http\Controllers\DoctorSearchController::class, 'search'])
-        ->name('doctorSearch');
+
 
     // Confirmation de rendez-vous par téléphone
     Route::get('/rdv-confirmation-téléphone', function () {
@@ -139,9 +137,33 @@ Route::middleware('patAuth')->group(function () {
 
     Route::get('/rdv', [App\Http\Controllers\RdvController::class, 'store'])->name('rdv.store');
     Route::post('/store-selected-time', [App\Http\Controllers\RdvController::class, 'storeSelectedTime'])->name('storeSelectedTime');
+
+
+    Route::get('/patient-dashboard', [App\Http\Controllers\PatientController::class, 'appointment'])->name('pat-appointments');
+    //profile seetings
+    Route::get('/patient-profile-settings', [App\Http\Controllers\PatientController::class, 'settings'])->name('pat-profile-settings');
+    Route::post('/patient-profile-settings-update', [App\Http\Controllers\PatientController::class, 'information'])->name('pat-profile-settings-update');
+
+    //logout
+    Route::get('/patient-logout', [App\Http\Controllers\LoginController::class, 'logoutPatient'])
+        ->name('patientLogout');
+
+
+    //patient change password 
+    Route::post('/patient-change-password', [App\Http\Controllers\PatientController::class, 'password'])
+        ->name('patient-change-password');
+    Route::get(
+        '/patient-password',
+        function () {
+            return view('patient.dashboard.password');
+        }
+    )
+        ->name('patient-password');
 });
 
 
 Route::post('/cancel-rdv', [App\Http\Controllers\RdvController::class, 'cancelRdv'])->name('cancelRdv');
 Route::post('/accept-rdv', [App\Http\Controllers\RdvController::class, 'acceptRdv'])->name('acceptRdv');
 
+Route::post('/médecin', [App\Http\Controllers\DoctorSearchController::class, 'search'])
+    ->name('doctorSearch');

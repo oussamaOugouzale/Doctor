@@ -1,4 +1,44 @@
+/* register.css */
+/*
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.border {
+    border: 1px solid #e2e8f0;
+}
+
+.rounded {
+    border-radius: 0.5rem;
+}
+
+.p-4 {
+    padding: 1.5rem;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+hr.my-4 {
+    margin: 1.5rem 0;
+}
+
+
+
+
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
 
 * {
@@ -59,4 +99,4 @@
 
 
 
-
+ */

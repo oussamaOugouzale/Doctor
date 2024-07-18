@@ -4,95 +4,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Login</title>
     <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/register.css') }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@22.0.1/build/css/intlTelInput.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@22.0.1/build/css/intlTelInput.css">
     <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@22.0.1/build/js/intlTelInput.min.js"></script>
 </head>
 
-<body>
-    <div class="containerr">
-        <div class="navbar">
-            <img src="{{ asset('images/doccure.png') }}" alt="">
-            <ul class="ul">
-                <li class="current"><a href="{{route('home')}}">Home</a></li>
-                <li><a href="">Contact</a></li>
-                <li><a href="">Qui somme nous ?</a></li>
-            </ul>
-        </div>
-        <div class="mainContainer">
-            <div class="img"><img src="{{ asset('images/login-banner.png') }}" alt=""></div>
-            <div class="formContainer rounded p-4 ">
-                <form action="{{ route('login') }}" method="post">
-                    @csrf
-                    <div class="header mx-auto">
-                        <h1>Connexion</h1>
-                        <a href="{{route('register')}}" class="underline ">S'inscrire</a>
+<body class="bg-gray-100">
+    <div class="container mx-auto">
+        <nav class="bg-white shadow">
+            <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+                <div class="relative flex items-center justify-between h-16">
+                    <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                        <button id="menu-btn" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                            <span class="sr-only">Open main menu</span>
+                            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                            </svg>
+                            <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
                     </div>
-                    <div class="mt-8">
-                        <a href="#" class="block">
-                            <button class="w-full text-center text-white py-2 my-3 border flex items-center justify-center bg-blue-500 border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:shadow transition duration-150">
-                                <svg class="w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 8 19">
-                                    <path fill-rule="evenodd" d="M6.135 3H8V0H6.135a4.147 4.147 0 0 0-4.142 4.142V6H0v3h2v9.938h3V9h2.021l.592-3H5V3.591A.6.6 0 0 1 5.592 3h.543Z" clip-rule="evenodd" />
-                                </svg>
-                                <span >Se connecter avec Facebook</span>
-                            </button>
+                    <div class="flex-1 flex items-center justify-between sm:items-stretch sm:justify-between">
+                        <a href="#" class="flex-shrink-0">
+                            <img class="h-8 w-auto" src="{{ asset('images/doccure.png') }}" alt="Doccure">
                         </a>
-                        <a href="#" class="block">
-                            <button class="w-full text-center py-2 my-3 border flex items-center justify-center border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150">
-                                <img src="https://www.svgrepo.com/show/355037/google.svg" class="w-5 h-5 mr-4" alt="Google Icon">
-                                <span class="">Se connecter avec Google</span>
-                            </button>
-                        </a>
-                    </div>
-                    <div class="inline-flex items-center justify-center w-full">
-                        <hr class="w-80 h-px my-4 bg-gray-300 border-0 ">
-                        <span class="absolute px-3 font-medium text-gray-900  bg-white ">OU</span>
-                    </div>
-                    <div class="inputs">
-                        <label for="UserEmail" class="relative block overflow-hidden rounded-md border border-gray-200 px-3 pt-3 shadow-sm focus-within:border-gary-300 focus-within:ring-1 focus-within:ring-gray-300 mt-4
-                        @error('email') border-red-500 focus-within:border-red-500 focus-within:ring-red-500 @else border-gray-200 @enderror">
-                            <input type="email" placeholder="Nom" name="email" value="{{ old('email') }}" class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm" />
-                            <span class="absolute start-3 top-3 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs
-                            @error('email')
-                                text-red-700
-                            @enderror
-                            ">
-                                Email
-                            </span>
-                        </label>
-                        @error('email')
-                        <p class="mt-2 text-sm text-red-600"> {{ $message }} </p>
-                        @enderror
-                        <label for="UserEmail" class="relative block overflow-hidden rounded-md border border-gray-200 px-3 pt-3 shadow-sm focus-within:border-gary-300 focus-within:ring-1 focus-within:ring-gray-300 mt-4
-                        @error('password') border-red-500 focus-within:border-red-500 focus-within:ring-red-500 @else border-gray-200 @enderror">
-                            <input type="password" placeholder="Password" name="password" value="{{ old('password') }}" class="peer h-8 w-full border-none bg-transparent p-0 placeholder-transparent focus:border-transparent focus:outline-none focus:ring-0 sm:text-sm" />
-                            <span class="absolute start-3 top-3 -translate-y-1/2 text-xs text-gray-700 transition-all peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-sm peer-focus:top-3 peer-focus:text-xs
-                            @error('password')
-                                text-red-700
-                            @enderror">
-                                Password
-                            </span>
-                        </label>
-                        @error('password')
-                        <p class="mt-2 text-sm text-red-600">{{$message}}</p>
-                        @enderror
-                        <button type="submit" class="text-white w-full  hover:bg-blue-800 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm mt-3 px-5 py-2.5 text-center  bg-blue-700">Soumettre</button>
-                        <div class="flex w-full">
-                        <a href="" class="mt-3 text-xs underline text-sky-400 hover:no-underline">Vous avez perdus votre mot de passe ?</a>
+                        <div class="hidden sm:block sm:ml-6">
+                            <div class="flex space-x-4">
+                                <a href="{{route('home')}}" class="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                                <a href="#" class="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                                <a href="#" class="text-gray-700 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Qui sommes nous ?</a>
+                            </div>
                         </div>
                     </div>
-                </form>
+                </div>
+            </div>
+
+            <div class="sm:hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="{{route('home')}}" class="text-gray-700 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                    <a href="#" class="text-gray-700 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+                    <a href="#" class="text-gray-700 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Qui sommes nous ?</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="flex justify-center mt-10">
+            <div class="w-full max-w-5xl flex flex-col md:flex-row items-center justify-center">
+                <div class=" w-full md:w-1/2 mb-8 md:mb-0 md:mr-8">
+                    <img src="{{ asset('images/login-banner.png') }}" class="w-full h-auto" alt="Login Banner">
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                        <div class="mb-4 text-center">
+                            <h1 class="text-2xl font-bold">Connexion</h1>
+                            <a href="{{route('register')}}" class="underline text-blue-500">S'inscrire</a>
+                        </div>
+                        <div class="mb-4">
+                            <button class="w-full bg-blue-600 text-white py-2 px-4 rounded flex items-center justify-center">
+                                <i class="fab fa-facebook-f mr-2"></i> Se connecter avec Facebook
+                            </button>
+                            <button class="w-full bg-white text-gray-700 py-2 px-4 rounded flex items-center justify-center mt-2 border">
+                                <img src="https://www.svgrepo.com/show/355037/google.svg" class="mr-2" width="20" alt="Google Icon"> Se connecter avec Google
+                            </button>
+                        </div>
+                        <div class="relative flex items-center justify-center mb-4">
+                            <div class="w-full border-t border-gray-300"></div>
+                            <span class="absolute bg-white px-3">OU</span>
+                        </div>
+                        <form action="{{ route('login') }}" method="post">
+                            @csrf
+                            <div class="mb-4">
+                                <label for="UserEmail" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                                <input type="email" id="UserEmail" name="email" value="{{ old('email') }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('email') border-red-500 @enderror">
+                                @error('email')
+                                <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="mb-6">
+                                <label for="UserPassword" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                                <input type="password" id="UserPassword" name="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline @error('password') border-red-500 @enderror">
+                                @error('password')
+                                <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                                @enderror
+                            </div>
+                            <div class="flex items-center justify-center">
+                                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Soumettre</button>
+                            </div>
+                            <div class="mt-4 text-center">
+                                <a href="#" class="text-blue-500 text-sm">Vous avez perdu votre mot de passe ?</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
-
-
+    <script>
+        document.getElementById('menu-btn').addEventListener('click', function () {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
 </body>
-
 </html>

@@ -106,7 +106,9 @@
                                         <div class="patient-details">
                                             <h5 class="mb-0">ttttttttttttttest, somthinnnng</h5>
                                         </div>
-                                        <span class="badge doctor-role-badge"><i class="fa-solid fa-circle"></i>{{Auth::guard('doctor')->user()->specialites->specialite}}</span>
+                                        @if(isset(Auth::guard('doctor')->user()->specialites) && isset(Auth::guard('doctor')->user()->specialites->specialite))
+                                        <span class="badge doctor-role-badge"><i class="fa-solid fa-circle"></i>{{ Auth::guard('doctor')->user()->specialites->specialite }}</span>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -212,9 +214,9 @@
                                                 <label class="col-form-label">Mode de réglement <span class="text-danger">*</span></label>
                                                 <select class="form-control" required name="reglement">
                                                     <option value="" disabled selected>Mode de réglement</option>
-                                                    <option value="espèces" >espèces</option>
-                                                    <option value="cart bancaire" >cart bancaire</option>
-                                                    <option value="chèques" >chèques</option>
+                                                    <option value="espèces">espèces</option>
+                                                    <option value="cart bancaire">cart bancaire</option>
+                                                    <option value="chèques">chèques</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -256,7 +258,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 
     <script>

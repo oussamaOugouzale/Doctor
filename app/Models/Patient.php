@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -19,6 +18,8 @@ class Patient extends Authenticatable
         'genre',
         'email',
         'password',
+        'photo',
+        'age',
         'numero_tel',
         'updated_at',
         'created_at'

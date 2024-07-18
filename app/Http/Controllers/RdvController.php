@@ -41,10 +41,8 @@ class RdvController extends Controller
             'jour' => $date,
         ]);
 
-        return response()->json(['success' => 'Rendez-vous enregistré avec succès.']);
+        return redirect()->route('pat-appointments');
     }
-
-
     private function translateFrenchMonthToEnglish($frenchMonth)
     {
         $months = [

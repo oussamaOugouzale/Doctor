@@ -73,10 +73,20 @@
                     </div>
                     <ul class="nav header-navbar-rht">
                         </li>
+                        @if(Auth::guard('patient')->user() != null)
+                        <li class="nav-item">
+                            <a class="nav-link header-login" href="{{route('pat-appointments')}}"><img src="assets/img/icons/user-circle.svg" alt="img">Mon Compte </a>
+                        </li>
+                        @elseif(Auth::guard('doctor')->user() != null)
+                        <li class="nav-item">
+                            <a class="nav-link header-login" href="{{route('dashboard')}}"><img src="assets/img/icons/user-circle.svg" alt="img">Dashboard </a>
+                        </li>
+                        @else
                         <li class="nav-item">
                             <a class="nav-link header-login" href="{{route('loginForm')}}"><img src="assets/img/icons/user-circle.svg" alt="img">Connexion /
                                 Inscription </a>
                         </li>
+                        @endif
                     </ul>
                 </nav>
             </div>
@@ -90,7 +100,7 @@
                         <div class="doctor-search">
                             <div class="banner-header">
                                 <h2><span>Rechercher un Médecin,</span> Prendre un Rendez-vous</h2>
-                                <p>Sélectionnez votre médecin, choisissez la date et l'heure de votre rdv et recevez votre sms/mail de confirmation. C’est aussi simple que ça !.</p>
+                                <p>Sélectionnez votre médecin, choisissez la date et l'heure de votre rdv et recevez votre sms de confirmation. C’est aussi simple que ça !</p>
                             </div>
                             <div class="doctor-form">
                                 @if(session('error'))
@@ -881,7 +891,7 @@
         </div>
 
 
-        
+
 
         <div class="mouse-cursor cursor-outer"></div>
         <div class="mouse-cursor cursor-inner"></div>
